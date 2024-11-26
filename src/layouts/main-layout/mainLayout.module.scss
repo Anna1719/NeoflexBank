@@ -1,0 +1,13 @@
+.wrappper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--grey);
+}
+
+.outlet {
+  flex: 1;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  width: 100%;
+}
