@@ -10,7 +10,7 @@
   padding: 10px 32px;
   box-shadow: 0px 4px 15px var(--light-grey);
 
-  @include media-breakpoint(lg){
+  @include media-breakpoint(lg) {
     width: 324px;
   }
 
@@ -47,17 +47,20 @@
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    gap:12px;
+    gap: 12px;
 
     &:hover {
       background-color: var(--light-blue);
     }
 
-    @include media-breakpoint(lg){
+    @include media-breakpoint(lg) {
       padding: 7px 14px;
-      span{
-        display: none;
-      }
+    }
+  }
+
+  &__buttonText {
+    @include media-breakpoint(lg) {
+      display: none;
     }
   }
 }

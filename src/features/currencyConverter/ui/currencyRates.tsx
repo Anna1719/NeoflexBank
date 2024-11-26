@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import style from "./currencyRates.module.scss";
-import { currencyAPI } from "@/shared/api/currencyAPI";
 import { BankLogo } from "@/icons";
 
 const currencies = ["USD", "CNY", "CHF", "EUR", "JPY", "TRY"];
@@ -11,9 +10,6 @@ interface Rates {
   [key: string]: number;
 }
 
-const API_HOST = currencyAPI.API_HOST;
-const API_KEY = currencyAPI.API_KEY;
-
 export const CurrencyRates: React.FC = () => {
   const [rates, setRates] = useState<Rates | null>(null);
   const [lastUpdated, setLastUpdated] = useState<string>("");
@@ -21,7 +17,9 @@ export const CurrencyRates: React.FC = () => {
   const fetchExchangeRates = async (
     baseCurrency: string
   ): Promise<Rates | null> => {
-    const url = `${API_HOST}/${API_KEY}/latest/${baseCurrency}`;
+    const url = `${import.meta.env.VITE_REACT_CURRENCY_API_HOST}/${
+      import.meta.env.VITE_REACT_CURRENCY_API_KEY
+    }/latest/${baseCurrency}`;
 
     try {
       const response = await axios.get(url);
@@ -56,7 +54,9 @@ export const CurrencyRates: React.FC = () => {
     <section className={style.converter}>
       <div className={style.converter__wrapper}>
         <div className={style.converter__header}>
-          <h3>Exchange rate in internet bank</h3>
+          <h3 className={style.converter__title}>
+            Exchange rate in internet bank
+          </h3>
           <div className={style.converter__update}>
             {lastUpdated
               ? `Update every 15 minutes, ${lastUpdated}`

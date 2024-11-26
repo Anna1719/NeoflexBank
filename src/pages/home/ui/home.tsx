@@ -1,7 +1,7 @@
 import { HeroSection } from "../homeComponents/heroSection";
 import { ServicesSection } from "../homeComponents/servicesSection";
 import style from "./home.module.scss";
-import { CurrencyRates } from "@/components/currencyConverter";
+import { CurrencyRates } from "@/features/currencyConverter";
 import { SubscribeForm } from "@/components/subscribeForm";
 
 export function HomePage() {

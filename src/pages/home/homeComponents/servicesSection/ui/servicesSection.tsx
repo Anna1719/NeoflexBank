@@ -19,10 +19,10 @@ export const ServicesSection = () => {
         />
       </div>
       <div className={style.services__infoWrapper}>
-        <h2>
+        <h2 className={style.services__title}>
           We Provide Many Features You Can Use
         </h2>
-        <p>
+        <p className={style.services__subtitle}>
           You can explore the features that we provide with fun and have their
           own functions each feature
         </p>

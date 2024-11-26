@@ -22,7 +22,7 @@ export const Footer = () => {
           <div className={style.footer__logo}>
             <Link target="_blank" to="https://www.neoflex.ru/">
               <img
-                src="/public/images/logos/NeoflexLogo.png"
+                src="/images/logos/NeoflexLogo.png"
                 alt="NeoflexLogo"
                 className={style.footer__logoImg}
               />
@@ -59,7 +59,7 @@ export const Footer = () => {
         <span className={style.footer__separator}></span>
 
         <div className={style.footer__cookies}>
-          <p>
+          <p className={style.footer__cookiesText}>
             We use cookies to personalize our services and improve the user
             experience of our website. Cookies are small files containing
             information about previous visits to a website. If you do not want

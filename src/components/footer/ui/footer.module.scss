@@ -15,7 +15,7 @@
     margin: auto;
 
     @include media-breakpoint(xl) {
-      max-width: calc(var(--content-width) - 30px);
+      box-sizing: content-box;
       padding:0 20px;
     }
   }
@@ -37,14 +37,14 @@
     flex-shrink: 0;
     padding-bottom: 50px;
 
-    &Img {
-      max-width: 160px;
-      height: auto;
-    }
-
     @include media-breakpoint(lg) {
       padding-bottom: 0;
     }
+  }
+
+  &__logoImg {
+    max-width: 160px;
+    height: auto;
   }
 
   &__links {
@@ -88,44 +88,42 @@
     @include media-breakpoint(lg) {
       text-align: right;
     }
+  }
 
-    a {
-      display: block;
-      text-decoration: none;
-      transition: color 0.3s;
+  &__contactMail {
+    color: var(--deep-grey);
+    font-size: 16px;
+    text-align: start;
+  }
 
-      &:hover {
-        color: var(--blue);
-      }
+  &__contactPhone {
+    color: var(--black);
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 8px;
 
-      &:first-child {
-        margin-bottom: 8px;
-      }
-
-      @include media-breakpoint(lg) {
-        margin-bottom: 8px;
-        text-align: center;
-      }
+    @include media-breakpoint(lg){
+      font-size: 24px;
     }
 
-    &Mail {
-      color: var(--deep-grey);
-      font-size: 16px;
-      text-align: start;
+    @include media-breakpoint(sm){
+      font-size: 20px;
+    }
+  }
+
+  &__contactMail,
+  &__contactPhone{
+    display: block;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--blue);
     }
 
-    &Phone {
-      color: var(--black);
-      font-size: 30px;
-      font-weight: bold;
-
-      @include media-breakpoint(lg){
-        font-size: 24px;
-      }
-
-      @include media-breakpoint(sm){
-        font-size: 20px;
-      }
+    @include media-breakpoint(lg) {
+      margin-bottom: 8px;
+      text-align: center;
     }
   }
 

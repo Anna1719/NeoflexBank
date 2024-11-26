@@ -3,7 +3,7 @@ import { SendEmail, EmailLogo } from "@/icons";
 
 export const SubscribeForm = () => {
   return (
-    <div className={style.subscribeForm}>
+    <form className={style.subscribeForm}>
       <div className={style.subscribeForm__inputField}>
         <EmailLogo />
         <input
@@ -14,8 +14,8 @@ export const SubscribeForm = () => {
       </div>
       <button className={style.subscribeForm__button}>
         <SendEmail />
-        <span>Subscribe</span>
+        <span className={style.subscribeForm__buttonText}>Subscribe</span>
       </button>
-    </div>
+    </form>
   );
 };

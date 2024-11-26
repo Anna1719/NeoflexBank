@@ -16,11 +16,11 @@
   &__image {
     max-width: 509px;
 
-    @include media-breakpoint(lg){
+    @include media-breakpoint(lg) {
       width: 380px;
     }
 
-    @include media-breakpoint(sm){
+    @include media-breakpoint(sm) {
       width: 280px;
     }
   }
@@ -29,28 +29,29 @@
     max-width: 717px;
     font-family: "Rubik", sans-serif;
 
-    h2 {
-      margin-bottom: 20px;
-      font-size: 36px;
-      font-weight: 500;
-    }
-
-    p {
-      font-size: 16px;
-      margin-bottom: 25px;
-      color: var(--deep-grey);
-    }
-
-    @include media-breakpoint(lg){
+    @include media-breakpoint(lg) {
       padding: 0 20px;
-      h2{
-        font-size: 30px;
-      }      
     }
 
-    @include media-breakpoint(sm){
-      padding:0 10px;
+    @include media-breakpoint(sm) {
+      padding: 0 10px;
     }
+  }
+
+  &__title {
+    margin-bottom: 20px;
+    font-size: 36px;
+    font-weight: 500;
+
+    @include media-breakpoint(lg) {
+      font-size: 30px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    margin-bottom: 25px;
+    color: var(--deep-grey);
   }
 
   &__benefitsList {

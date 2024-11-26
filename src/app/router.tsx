@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import { HomePage } from "../pages/home";
-import { MainLayout } from "../layouts";
+import { HomePage } from "@/pages/home";
+import { LoanPage } from "@/pages/loan";
+import { MainLayout } from "@/layouts";
 import { ROUTES } from "./routes";
 
 const routes = [
@@ -12,6 +13,10 @@ const routes = [
         element: <HomePage />,
         index: true,
       },
+      {
+        path: ROUTES.CREDIT,
+        element: <LoanPage />
+      }
     ],
   },
 ];
