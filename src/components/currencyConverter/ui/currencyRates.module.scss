@@ -1,0 +1,122 @@
+@use "../../../styles/media.scss" as *;
+
+.converter {
+  width: 100%;
+  padding: 48px 0;
+
+  &__wrapper {
+    margin: auto;
+    background: linear-gradient(var(--grey), var(--light-grey));
+    padding: 32px;
+    max-width: var(--content-width);
+    border-radius: 28px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: var(--deep-grey);
+
+    @include media-breakpoint(xl) {
+      margin: 0 20px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+
+    h3 {
+      font-size: 30px;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    @include media-breakpoint(lg) {
+      gap: 32px;
+
+      h3 {
+        font-size: 24px;
+      }
+    }
+  }
+
+  &__update {
+    font-size: 16px;
+    font-weight: 600;
+
+    @include media-breakpoint(lg) {
+      font-size: 14px;
+    }
+  }
+
+  &__label {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 32px;
+
+    @include media-breakpoint(lg) {
+      font-size: 14px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 101px);
+    gap: 12px 32px;
+    max-width: 400px;
+    align-items: center;
+
+    @include media-breakpoint(lg) {
+      grid-template-columns: repeat(2, 101px);
+    }
+
+    @include media-breakpoint(sm) {
+      grid-template-columns: repeat(1, 101px);
+    }
+  }
+
+  &__currency {
+    display: flex;
+    gap: 20px;
+
+    &Rate,
+    &Name {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    &Name {
+      color: var(--mid-grey);
+    }
+
+    @include media-breakpoint(lg) {
+      &Rate,
+      &Name {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__icon {
+    margin-left: auto;
+  }
+
+  &__allCourses {
+    display: block;
+    text-align: left;
+    color: var(--white);
+    font-size: 20px;
+    font-weight: bold;
+    margin: 38px 0 0 0;
+    text-decoration: none;
+
+    @include media-breakpoint(lg) {
+      font-size: 14px;
+    }
+  }
+}

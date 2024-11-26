@@ -1,0 +1,19 @@
+@use "./normalize.scss";
+@use "./_constants.scss";
+@use "./_fonts.scss";
+@use "./media";
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: "Ubuntu", sans-serif;
+  color-scheme: light dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}

@@ -1,0 +1,15 @@
+@mixin media-breakpoint($size) {
+  @if $size == sm {
+    @media (max-width: 500px) {
+      @content;
+    }
+  } @else if $size == lg {
+    @media (max-width: 920px) {
+      @content;
+    }
+  } @else if $size == xl {
+    @media (max-width: 1310px) {
+      @content;
+    }
+  }
+}

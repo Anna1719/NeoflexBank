@@ -1,0 +1,148 @@
+@use "../../../styles/media.scss" as * ;
+
+.footer {
+  background-color: var(--grey-two);
+  width: 100%;
+  padding: 96px 0 92px 0;
+  color: var(--black);
+
+  @include media-breakpoint(lg) {
+    padding: 40px 20px;
+  }
+
+  &__container {
+    max-width: var(--content-width);
+    margin: auto;
+
+    @include media-breakpoint(xl) {
+      max-width: calc(var(--content-width) - 30px);
+      padding:0 20px;
+    }
+  }
+
+  &__top {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    display: flex;
+
+    @include media-breakpoint(lg) {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  &__logo {
+    flex-shrink: 0;
+    padding-bottom: 50px;
+
+    &Img {
+      max-width: 160px;
+      height: auto;
+    }
+
+    @include media-breakpoint(lg) {
+      padding-bottom: 0;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 8px 40px;
+
+    @include media-breakpoint(lg) {
+      justify-content: center;
+      gap: 8px 20px;
+    }
+  }
+
+  &__linkItem {
+    margin: 0;
+
+    @include media-breakpoint(lg) {
+      text-align: center;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: var(--black);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5rem;
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--blue);
+    }
+  }
+
+  &__contact {
+    text-align: center;
+
+    @include media-breakpoint(lg) {
+      text-align: right;
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:hover {
+        color: var(--blue);
+      }
+
+      &:first-child {
+        margin-bottom: 8px;
+      }
+
+      @include media-breakpoint(lg) {
+        margin-bottom: 8px;
+        text-align: center;
+      }
+    }
+
+    &Mail {
+      color: var(--deep-grey);
+      font-size: 16px;
+      text-align: start;
+    }
+
+    &Phone {
+      color: var(--black);
+      font-size: 30px;
+      font-weight: bold;
+
+      @include media-breakpoint(lg){
+        font-size: 24px;
+      }
+
+      @include media-breakpoint(sm){
+        font-size: 20px;
+      }
+    }
+  }
+
+  &__separator {
+    margin: 30px 0;
+    display: block;
+    width: 100%;
+    border-top: 2px solid var(--white);
+  }
+
+  &__cookies {
+    font-size: 16px;
+    color: var(--deep-grey);
+
+    @include media-breakpoint(lg) {
+      text-align: center;
+      font-size: 12px;
+    }
+  }
+}
