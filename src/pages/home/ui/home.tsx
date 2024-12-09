@@ -3,6 +3,7 @@ import { ServicesSection } from "../homeComponents/servicesSection";
 import style from "./home.module.scss";
 import { CurrencyRates } from "@/features/currencyConverter";
 import { SubscribeForm } from "@/components/subscribeForm";
+import { NewsSlider } from "@/features/newsSlider";
 
 export function HomePage() {
   return (
@@ -23,6 +24,7 @@ export function HomePage() {
           className={style.mapSection__image}
         />
       </section>
+      <NewsSlider />
       <section className={style.subscribeSection}>
         <a href="#" className={style.subscribeSection__link}>
           Support

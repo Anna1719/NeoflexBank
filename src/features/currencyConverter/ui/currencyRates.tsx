@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import style from "./currencyRates.module.scss";
 import { BankLogo } from "@/icons";
+import { fetchExchangeRates } from "../api/currencyRequest";
 
 const currencies = ["USD", "CNY", "CHF", "EUR", "JPY", "TRY"];
 const updateInterval = 15 * 60 * 1000;
@@ -10,32 +10,9 @@ interface Rates {
   [key: string]: number;
 }
 
-export const CurrencyRates: React.FC = () => {
+export const CurrencyRates = () => {
   const [rates, setRates] = useState<Rates | null>(null);
   const [lastUpdated, setLastUpdated] = useState<string>("");
-
-  const fetchExchangeRates = async (
-    baseCurrency: string
-  ): Promise<Rates | null> => {
-    const url = `${import.meta.env.VITE_REACT_CURRENCY_API_HOST}/${
-      import.meta.env.VITE_REACT_CURRENCY_API_KEY
-    }/latest/${baseCurrency}`;
-
-    try {
-      const response = await axios.get(url);
-      const data = response.data;
-
-      if (data.result === "success") {
-        return data.conversion_rates;
-      } else {
-        console.error("Ошибка получения курсов:", data["error-type"]);
-        return null;
-      }
-    } catch (error) {
-      console.error("Ошибка сети или запроса:", error);
-      return null;
-    }
-  };
 
   const updateCurrencyRates = async () => {
     const newRates = await fetchExchangeRates("RUB");
