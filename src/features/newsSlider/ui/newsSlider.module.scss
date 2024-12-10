@@ -1,0 +1,137 @@
+@use "../../../styles/media.scss" as *;
+
+.newsSlider {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 48px 0;
+  text-align: center;
+  font-weight: 500;
+
+  @include media-breakpoint(xl){
+    padding: 0 20px;
+  }
+
+  &__title {
+    font-size: 30px;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+  }
+
+  @include media-breakpoint(lg){
+    &__title{
+      font-size: 26px;
+    }
+
+    &__subtitle{
+      font-size: 14px;
+    }
+  }
+
+  @include media-breakpoint(sm){
+    &__title{
+      font-size: 22px;
+    }
+
+    &__subtitle{
+      font-size: 12px;
+    }
+  }
+
+  &__slider {
+    padding: 46px 4px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__sliderGallery {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+
+    & > :not(:first-child) {
+      margin-left: 80px;
+    }
+  }
+
+  &__card {
+    background-color: var(--white);
+    width: 320px;
+    min-height: 448px;
+    box-shadow: 0px 4px 6px var(--light-grey);
+    border-radius: 28px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__cardImage {
+    width: 256px;
+    height: 120px;
+  }
+
+  &__cardTitle {
+    font-size: 20px;
+    margin: 32px 0;
+    height: 100%;
+  }
+
+  &__cardLink {
+    color: var(--black);
+
+    &:hover {
+      color: var(--blue);
+    }
+  }
+
+  &__cardDescription {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  @include media-breakpoint(lg){
+    &__cardTitle{
+      font-size: 16px;
+    }
+
+    &__cardDescription{
+      font-size: 14px;
+    }
+  }
+
+  &__buttons {
+    padding: 2px 0;
+    display: flex;
+    justify-content: right;
+    gap: 20px;
+
+    @include media-breakpoint(lg){
+      justify-content: center;
+    }
+  }
+
+  &__buttonSlide {
+    width: 64px;
+    height: 64px;
+    background-color: var(--blue);
+    border: 1px solid var(--blue);
+    border-radius: 50px;
+    stroke: var(--white);
+
+    &:disabled {
+      color: var(--black);
+      background-color: var(--white);
+      stroke: var(--black);
+
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
