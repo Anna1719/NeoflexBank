@@ -22,7 +22,12 @@ export enum PrescopingFormFields {
   passportNumber = "passportNumber",
 }
 
-export const termOptions = [
+export type termOptionType = {
+  label: string;
+  value: number;
+}
+
+export const termOptions: termOptionType[] = [
   { label: "6 months", value: 6 },
   { label: "12 month", value: 12 },
   { label: "18 month", value: 18 },
