@@ -1,0 +1,114 @@
+@use "../../../styles/media" as *;
+
+.mapSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: var(--content-width);
+  padding-bottom: 48px;
+
+  &__header {
+    font-size: 30px;
+  }
+
+  &__info {
+    font-size: 16px;
+    padding-bottom: 48px;
+  }
+
+  &__image {
+    max-width: 1060px;
+  }
+
+  @include media-breakpoint(xl) {
+    max-width: calc(var(--content-width) - 40px);
+    padding: 0 20px 48px 20px;
+
+    &__header {
+      font-size: 24px;
+    }
+
+    &__info {
+      font-size: 14px;
+    }
+
+    &__image {
+      max-width: 880px;
+    }
+  }
+
+  @include media-breakpoint(lg) {
+    &__header {
+      font-size: 20px;
+    }
+
+    &__info {
+      font-size: 10px;
+    }
+
+    &__image {
+      max-width: 480px;
+    }
+  }
+
+  @include media-breakpoint(sm) {
+    &__header {
+      font-size: 16px;
+    }
+
+    &__image {
+      max-width: 280px;
+    }
+  }
+}
+
+.subscribeSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 16px 0 98px 0;
+
+  &__link {
+    font-size: 24px;
+    color: var(--orange);
+    font-weight: 600;
+
+    &:hover{
+      color: var(--blue);
+    }
+  }
+
+  &__titleFirst {
+    margin: 30px 0 13px 0;
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  &__titleSecond {
+    margin: 13px 0 62px 0;
+    font-size: 30px;
+    font-weight: 500;
+  }
+
+  @include media-breakpoint(lg){
+    &__link{
+      font-size: 18px;
+    }
+
+    &__titleFirst,
+    &__titleSecond{
+      font-size: 22px;
+    }
+  }
+
+  @include media-breakpoint(sm){
+    &__link{
+      font-size: 14px;
+    }
+
+    &__titleFirst,
+    &__titleSecond{
+      font-size: 18px;
+    }
+  }
+}

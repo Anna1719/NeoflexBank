@@ -1,0 +1,66 @@
+@use "../../../styles//media" as *;
+
+.subscribeForm {
+  width: 524px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  border-radius: 20px;
+  padding: 10px 32px;
+  box-shadow: 0px 4px 15px var(--light-grey);
+
+  @include media-breakpoint(lg) {
+    width: 324px;
+  }
+
+  &__inputField {
+    display: flex;
+    align-items: center;
+    background-color: var(--white);
+    border-radius: 15px;
+    padding: 10px 15px;
+    flex-grow: 1;
+    gap: 8px;
+  }
+  &__input {
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--light-grey);
+    width: 100%;
+  }
+
+  &__button {
+    max-width: 161px;
+    padding: 7px 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--purple);
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    gap: 12px;
+
+    &:hover {
+      background-color: var(--light-blue);
+    }
+
+    @include media-breakpoint(lg) {
+      padding: 7px 14px;
+    }
+  }
+
+  &__buttonText {
+    @include media-breakpoint(lg) {
+      display: none;
+    }
+  }
+}

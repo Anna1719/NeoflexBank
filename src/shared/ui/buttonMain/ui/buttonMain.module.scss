@@ -1,0 +1,26 @@
+.buttonMain {
+  background-color: var(--blue);
+  color: var(--white);
+  border: none;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--light-blue);
+  }
+
+  &:disabled {
+    background-color: var(--mid-grey);
+  }
+}
+
+.buttonRadius-16 {
+  border-radius: 16px;
+}
+
+.buttonRadius-8 {
+  border-radius: 8px;
+}
