@@ -1,0 +1,41 @@
+@use "../../../../../../../styles/media" as *;
+
+.cashbackTab {
+  padding: 49px 0;
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 38px;
+  }
+
+  &__item {
+    flex: 1 0 406px;
+    min-height: 163px;
+    padding: 32px;
+    border-radius: 28px;
+    background-color: var(--card-grey);
+    align-content: space-between;
+    box-shadow: 0px 4px 4px var(--light-grey);
+
+    &:nth-child(even) {
+      background-color: var(--card-light-blue);
+    }
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 14px 0;
+
+    @include media-breakpoint(lg) {
+      font-size: 14px;
+    }
+  }
+
+  &__text {
+    font-size: 36px;
+    font-weight: 600;
+  }
+}

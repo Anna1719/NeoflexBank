@@ -1,0 +1,10 @@
+@use "../../../../../styles/media" as *;
+
+.tabSection {
+  max-width: var(--content-width);
+  margin-top: 48px;
+  @include media-breakpoint(xl) {
+    margin: 0 20px;
+    box-sizing: content-box;
+  }
+}
