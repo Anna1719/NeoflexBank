@@ -25,6 +25,20 @@ export const Input: React.FC<InputProps> = ({
   error,
   register,
 }) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (id === "birthdate") {
+      let value = e.target.value.replace(/\D/g, "");
+      if (value.length > 4) {
+        value = `${value.slice(0, 4)}-${value.slice(4)}`;
+      }
+      if (value.length > 7) {
+        value = `${value.slice(0, 7)}-${value.slice(7, 9)}`;
+      }
+      e.target.value = value;
+    }
+    register.onChange(e);
+  };
+
   const fieldError = error ? "error" : "";
   return (
     <div className={style.input}>
@@ -35,8 +49,9 @@ export const Input: React.FC<InputProps> = ({
           placeholder={placeholder}
           className={style.input__insideField}
           {...register}
+          onChange={handleInputChange}
         />
-        {sub ? ( error? <ErrorMark /> : <CorrectMark />): ""}
+        {sub ? error ? <ErrorMark /> : <CorrectMark /> : ""}
       </div>
       {error && <span className={style.input__errorMessage}>{error}</span>}
     </div>
