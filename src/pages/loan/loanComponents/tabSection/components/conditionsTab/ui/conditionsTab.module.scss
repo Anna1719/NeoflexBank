@@ -1,0 +1,49 @@
+@use "../../../../../../../styles/media" as *;
+
+.conditions {
+  padding-top: 16px;
+
+  &__list {
+    max-width: 1016px;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--card-blue);
+    }
+    display: flex;
+    flex-direction: row;
+    padding: 24px 0;
+    font-size: 16px;
+
+    @include media-breakpoint(xl){
+      font-size: 14px;
+    }
+
+    @include media-breakpoint(lg){
+      font-size: 12px;
+    }
+
+    @include media-breakpoint(sm){
+      font-size: 10px;
+    }
+  }
+
+  &__itemTitle{
+    width: 300px;
+    font-weight: 600;
+    color: var( --black);
+  }
+
+  &__itemText{
+    font-weight: 500;
+    color: var(--deep-grey);
+    max-width: calc(100% - 300px);
+  }
+
+  &__itemTextLine{
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

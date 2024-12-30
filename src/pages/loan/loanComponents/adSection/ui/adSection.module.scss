@@ -1,0 +1,93 @@
+@use "../../../../../styles/media" as *;
+
+.adSection {
+  max-width: var(--content-width);
+  background: linear-gradient(#cbd5e0, #feebc8);
+  padding: 48px 32px;
+  border-radius: 29px;
+  color: var(--deep-grey);
+  box-shadow: 0px 4px 4px var(--light-grey);
+
+  @include media-breakpoint(xl) {
+    margin: 0 20px;
+    box-sizing: content-box;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @include media-breakpoint(lg) {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  }
+
+  &__infoWrapper {
+    @include media-breakpoint(lg) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__title {
+    color: var(--white);
+    font-size: 48px;
+    font-weight: 600;
+
+    @include media-breakpoint(lg) {
+      font-size: 36px;
+    }
+
+    @include media-breakpoint(sm) {
+        font-size: 32px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    max-width: 515px;
+    margin-top: 48px;
+    font-weight: 500;
+    line-height: 1.2rem;
+
+    @include media-breakpoint(lg) {
+      font-size: 14px;
+    }
+  }
+
+  &__points {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__pointTitle {
+    font-size: 20px;
+    font-weight: 600;
+    @include media-breakpoint(lg) {
+      font-size: 16px;
+    }
+  }
+
+  &__pointSubtitle {
+    font-size: 16px;
+    font-weight: 500;
+    @include media-breakpoint(lg) {
+      font-size: 14px;
+    }
+  }
+
+  &__card {
+    margin: 34px 85px 36px 0;
+
+    @include media-breakpoint(xl) {
+      margin-right: 24px;
+    }
+
+    @include media-breakpoint(lg) {
+      margin-right: 0;
+    }
+  }
+}
