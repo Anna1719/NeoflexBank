@@ -1,15 +1,15 @@
 import { legacy_createStore as createStore } from "redux";
 import { composeWithDevTools } from "@redux-devtools/extension";
-import { loanReducer } from "./reducers";
+import { initialState, loanReducer } from "./reducers";
 import { LoanState } from "./types";
 import { resetStore } from "./actions";
 
 const loadState = (): LoanState | undefined => {
   try {
     const serializedState = localStorage.getItem("loanState");
-    return serializedState ? JSON.parse(serializedState) : undefined;
+    return serializedState ? JSON.parse(serializedState) : initialState;
   } catch {
-    return undefined;
+    return initialState;
   }
 };
 

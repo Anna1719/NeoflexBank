@@ -3,7 +3,11 @@ import style from "./stepsSection.module.scss";
 import { PrescoringForm } from "../../prescoring";
 import { Offers } from "../components/offers";
 
-export const StepsSection = ( step : number) => {
+type TProps = {
+  step: number;
+};
+
+export const StepsSection = ({ step }: TProps) => {
   return (
     <section className={style.stepsSection}>
       <StepsComponent />

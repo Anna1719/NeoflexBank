@@ -1,6 +1,6 @@
 import { LoanState, LoanAction } from "./types";
 
-const initialState: LoanState = {
+export const initialState: LoanState = {
   applicationId: null,
   offers: [],
   currentStep: 1,
