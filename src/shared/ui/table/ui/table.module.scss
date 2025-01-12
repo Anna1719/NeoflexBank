@@ -1,0 +1,45 @@
+@use "../../../../styles/media" as *;
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  &__columnsHead {
+    border-bottom: 1px solid var(--light-grey);
+  }
+
+  &__header {
+    color: var(--subtext-grey);
+    gap: 5px;
+    font-size: 12px;
+    padding: 10px 0;
+    text-align: left;
+    &:hover {
+      cursor: pointer;
+    }
+
+    @include media-breakpoint(lg) {
+      font-size: 10px;
+    }
+  }
+
+  &__body {
+    color: var(--black);
+    font-size: 12px;
+    font-weight: 500;
+
+    @include media-breakpoint(lg) {
+      font-size: 10px;
+    }
+
+  }
+
+  &__rowsBody {
+    border-bottom: 1px solid var(--light-grey);
+  }
+
+  &__bodyItem {
+    color: var(--black);
+    padding: 10px 0;
+  }
+}

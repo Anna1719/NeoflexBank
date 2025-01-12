@@ -1,6 +1,10 @@
 import { ButtonMain } from "@/shared/ui/buttonMain";
 import style from "./adSection.module.scss";
 import { Tooltip } from "@/shared/ui/tooltip";
+import { getRouteByStep } from "@/utils/routesInfo";
+import { useNavigate } from "react-router-dom";
+import { LoanState } from "@/store/types";
+import { useSelector } from "react-redux";
 
 const handleScrollToId = () => {
   const element = document.getElementById("cardForm");
@@ -12,7 +16,37 @@ const handleScrollToId = () => {
   }
 };
 
-export const AdSection = () => {
+interface TProps {
+  step: number;
+}
+
+const buttonTitle = (step: number) => {
+  switch (step) {
+    case 1:
+      return "Apply for card";
+    case 2:
+      return "Choose an offer";
+    case 3:
+      return "Continue registration";
+    default:
+      return "Continue registration";
+  }
+};
+
+export const AdSection = ({ step }: TProps) => {
+  const currentAppId = useSelector((state: LoanState) => state.applicationId);
+  const navigate = useNavigate();
+
+  const buttonOnClickStep = (step: number) => {
+    if (step === 1 || step === 2) return () => handleScrollToId();
+    else {
+      const route = getRouteByStep(step);
+      return () => {
+        navigate(`${currentAppId}` + route);
+      };
+    }
+  };
+
   return (
     <section className={style.adSection}>
       <div className={style.adSection__wrapper}>
@@ -51,8 +85,8 @@ debt up to 160 days."
               </Tooltip>
             </li>
           </ul>
-          <ButtonMain radius="8" onClick={handleScrollToId}>
-            Apply for card
+          <ButtonMain radius={8} width={160} onClick={buttonOnClickStep(step)}>
+            {buttonTitle(step)}
           </ButtonMain>
         </div>
         <div className={style.adSection__card}>

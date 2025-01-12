@@ -1,4 +1,4 @@
-import { PrescopingFormData } from "./formTypes";
+import { PrescopingFormData } from "./prescoringFormTypes";
 
 export const formPrescoringData = (formData: PrescopingFormData) => {
   const processedData = { ...formData };
@@ -13,3 +13,4 @@ export const formPrescoringData = (formData: PrescopingFormData) => {
 
   return processedData;
 };
+

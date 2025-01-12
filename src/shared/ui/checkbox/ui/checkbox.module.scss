@@ -1,0 +1,28 @@
+@use "../../../../styles/media" as *;
+
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+
+  &__input {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__label {
+    font-size: 18px;
+
+    @include media-breakpoint(xl) {
+      font-size: 14px;
+    }
+
+    @include media-breakpoint(lg) {
+      font-size: 12px;
+    }
+
+    @include media-breakpoint(sm) {
+      font-size: 10px;
+    }
+  }
+}

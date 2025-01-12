@@ -1,0 +1,79 @@
+@use "../../../styles/media" as *;
+
+.scoring {
+  display: block;
+  width: 100%;
+  min-height: calc(100vh - 80px - 462px);
+  background-color: var(--white);
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow: 0px 4px 4px var(--light-grey);
+  margin-bottom: 96px;
+
+  &__loaderCenter {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    margin-bottom: 40px;
+  }
+
+  &__topTitle {
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  &__topSubtitle{
+    font-size: 16px;
+    font-weight: 500;
+    margin: 10px 0 0 0;
+  }
+
+  &__bottomUp{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    &>*{
+      flex: 1 0 402px;
+    }
+  }
+
+  &__bottomTitle{
+    margin: 32px 0;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  &__bottomDown{
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(3, 1fr);
+
+    @include media-breakpoint(xl) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  
+    @include media-breakpoint(lg) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    @include media-breakpoint(sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  
+  &__buttonWrapper {
+    margin-top: 20px;
+    grid-column-start: 3;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

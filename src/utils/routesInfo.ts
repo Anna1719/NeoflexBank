@@ -1,0 +1,23 @@
+export enum ROUTES {
+  HOME = "/",
+  CREDIT = "loan",
+  APPLICATION = "loan/:applicationId",
+  DOCUMENT = "loan/:applicationId/document",
+  SIGN = "loan/:applicationId/document/sign",
+  CODE = "loan/:applicationId/code"
+}
+export type stepRouting = {
+  step: number;
+  route: string;
+};
+export const stepsRouting: stepRouting[] = [
+  { step: 3, route: "" },
+  { step: 4, route: "/document" },
+  { step: 5, route: "/document/sign" },
+  { step: 6, route: "/code" },
+];
+
+export const getRouteByStep = (step: number): string => {
+  const route = stepsRouting.find((entry) => entry.step === step)?.route;
+  return route || "";
+};

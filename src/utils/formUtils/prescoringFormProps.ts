@@ -2,9 +2,10 @@ import {
   PrescopingFormData,
   PrescopingFormFields,
   termOptions,
-  termOptionType,
-} from "./formTypes";
-import { validateDate } from "./validateDate";
+} from "./prescoringFormTypes";
+import { selectorType } from "../general";
+import { formatDate } from "../formatters";
+import { validateDate } from "../validateDate";
 
 export type FormField = {
   id: keyof PrescopingFormData;
@@ -12,9 +13,10 @@ export type FormField = {
   label: string;
   type: string;
   placeholder?: string;
-  options?: termOptionType[];
+  options?: selectorType[];
   validation?: Record<string, unknown>;
   order?: number;
+  formatter?: (value: string) => string;
 };
 
 export const formFields: Record<string, FormField> = {
@@ -93,6 +95,7 @@ export const formFields: Record<string, FormField> = {
       required: "Enter your date of birth",
       validate: (value: string | Date) => validateDate(value),
     },
+    formatter: (value:string) => formatDate(value),
   },
   passportSeries: {
     id: PrescopingFormFields.passportSeries,

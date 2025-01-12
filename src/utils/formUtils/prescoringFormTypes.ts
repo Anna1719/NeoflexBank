@@ -1,3 +1,5 @@
+import { selectorType } from "./general";
+
 export type PrescopingFormData = {
   amount: number;
   term: number;
@@ -22,12 +24,7 @@ export enum PrescopingFormFields {
   passportNumber = "passportNumber",
 }
 
-export type termOptionType = {
-  label: string;
-  value: number;
-}
-
-export const termOptions: termOptionType[] = [
+export const termOptions: selectorType[] = [
   { label: "6 months", value: 6 },
   { label: "12 month", value: 12 },
   { label: "18 month", value: 18 },

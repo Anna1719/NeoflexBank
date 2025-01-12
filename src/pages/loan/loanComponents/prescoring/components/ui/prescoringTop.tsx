@@ -5,7 +5,7 @@ import {
   DividerStyleFormFirst,
   DividerStyleFormSecond,
 } from "@/utils/dividerStyles";
-import { PrescopingFormData, PrescopingFormFields } from "@/utils/formTypes";
+import { PrescopingFormData, PrescopingFormFields } from "@/utils/formUtils/prescoringFormTypes";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
 
 interface PrescoringTopProps {

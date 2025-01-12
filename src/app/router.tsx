@@ -2,7 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import { HomePage } from "@/pages/home";
 import { LoanPage } from "@/pages/loan";
 import { MainLayout } from "@/layouts";
-import { ROUTES } from "./routes";
+import { ROUTES } from "@/utils/routesInfo";
+import { ApplicationForm } from "@/pages/application/ui/applicationPage";
+import { DocumentPage } from "@/pages/document";
 
 const routes = [
   {
@@ -15,8 +17,24 @@ const routes = [
       },
       {
         path: ROUTES.CREDIT,
-        element: <LoanPage />
-      }
+        element: <LoanPage />,
+      },
+      {
+        path: ROUTES.APPLICATION,
+        element: <ApplicationForm />,
+      },
+      {
+        path: ROUTES.DOCUMENT,
+        element: <DocumentPage />,
+      },
+      {
+        path: ROUTES.SIGN,
+        element: <></>,
+      },
+      {
+        path: ROUTES.CODE,
+        element: <></>,
+      },
     ],
   },
 ];

@@ -13,6 +13,7 @@ type InputProps = {
   placeholder?: string;
   error?: string;
   register: UseFormRegisterReturn;
+  formatter?: (value: string) => string;
 };
 
 export const Input: React.FC<InputProps> = ({
@@ -24,16 +25,12 @@ export const Input: React.FC<InputProps> = ({
   placeholder,
   error,
   register,
+  formatter,
 }) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (id === "birthdate") {
-      let value = e.target.value.replace(/\D/g, "");
-      if (value.length > 4) {
-        value = `${value.slice(0, 4)}-${value.slice(4)}`;
-      }
-      if (value.length > 7) {
-        value = `${value.slice(0, 7)}-${value.slice(7, 9)}`;
-      }
+    let value = e.target.value;
+    if (formatter) {
+      value = formatter(value);
       e.target.value = value;
     }
     register.onChange(e);

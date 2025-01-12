@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ROUTES } from "@/app/routes";
+import { ROUTES } from "@/utils/routesInfo";
 import { ButtonMain } from "@/shared/ui/buttonMain";
 import style from "./header.module.scss";
 
@@ -29,7 +29,7 @@ export const Header = () => {
           </ul>
         </nav>
         <div className={style.header__button}>
-          <ButtonMain type="button" radius="16">
+          <ButtonMain type="button" radius={16}>
             Online Bank
           </ButtonMain>
         </div>

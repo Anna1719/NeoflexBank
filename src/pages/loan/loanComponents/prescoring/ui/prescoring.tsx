@@ -1,15 +1,19 @@
 import style from "./prescoring.module.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Select, Input } from "@/shared/ui/formFields";
-import { formPrescoringData } from "@/utils/formPrescoringData";
+import { formPrescoringData } from "@/utils/formUtils/prescoringFormData";
 import { useEffect, useState } from "react";
 import { PrescoringTop } from "../components";
-import { initialFormData, PrescopingFormData } from "@/utils/formTypes";
-import { formFields } from "@/utils/prescoringFormProps";
+import { initialFormData, PrescopingFormData } from "@/utils/formUtils/prescoringFormTypes";
+import { formFields } from "@/utils/formUtils/prescoringFormProps";
 import { ButtonMain } from "@/shared/ui/buttonMain";
 import { useAxios } from "@/shared/hooks/useAxios";
 import { AxiosRequestConfig } from "axios";
 import { Loader } from "@/shared/ui/loader";
+import { Offer } from "@/store/types";
+import { setApplicationId, setCurrentStep, setOffers, setStepStatus } from "@/store/actions";
+import { AppDispatch } from "@/store/store";
+import { useDispatch } from "react-redux";
 
 export const PrescoringForm = () => {
   const {
@@ -28,8 +32,12 @@ export const PrescoringForm = () => {
     null
   );
 
-  const onSubmit: SubmitHandler<PrescopingFormData> = async (data) => {
-    const tunedData = formPrescoringData(data);
+  const { loading, data } = useAxios<Offer[]>(axiosConfig);
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  const onSubmit: SubmitHandler<PrescopingFormData> = async (formData) => {
+    const tunedData = formPrescoringData(formData);
     setAxiosConfig({
       method: "POST",
       url: "/application",
@@ -38,12 +46,15 @@ export const PrescoringForm = () => {
   };
 
   useEffect(() => {
-    if (isSubmitSuccessful) {
+    if (isSubmitSuccessful && data) {
+      dispatch(setCurrentStep(2));
+      dispatch(setApplicationId(data[0].applicationId));
+      dispatch(setOffers(data));
+      dispatch(setStepStatus(1, { status: "isSent" }));
+      dispatch(setStepStatus(2, { status: "isActive" }));
       reset();
     }
-  }, [isSubmitSuccessful, reset]);
-
-  const { loading } = useAxios(axiosConfig);
+  }, [isSubmitSuccessful, reset, data, dispatch]);
 
   return loading ? (
     <div className={style.prescoring}>
@@ -90,11 +101,12 @@ export const PrescoringForm = () => {
                 placeholder={field.placeholder}
                 error={errors[field.id]?.message}
                 register={register(field.id, field.validation)}
+                formatter={field.formatter}
               />
             );
           })}
           <div className={style.prescoring__buttonWrapper}>
-            <ButtonMain radius="8" width="148">
+            <ButtonMain radius={8} width={148}>
               Continue
             </ButtonMain>
           </div>
