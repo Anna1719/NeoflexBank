@@ -63,4 +63,18 @@
       display: none;
     }
   }
+
+  &__message {
+    font-size: 18px;
+    color: var(--purple);
+    text-align: center;
+    margin-top: 16px;
+  }
+  
+  &__error {
+    font-size: 16px;
+    color: var(--black);
+    margin-top: 8px;
+    display: block;
+  }
 }

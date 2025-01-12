@@ -1,0 +1,22 @@
+.tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--line-grey);
+}
+
+.tab {
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.30s;
+
+  &__label {
+    color: var(--light-brown);
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+.openTab {
+  border-bottom: 1px solid var(--light-brown);
+}

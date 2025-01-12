@@ -1,0 +1,46 @@
+.input,
+.select {
+  display: flex;
+  flex-direction: column;
+  max-width: 568px;
+  &__field {
+    padding: 6px;
+    height: 40px;
+    outline: none;
+    border: 2px solid var(--line-grey);
+    border-radius: 6px;
+    background-color: var(--input-pink);
+    display: flex;
+    flex-direction: row;
+    &:focus-within {
+      outline: var(--purple);
+      border-color: var(--purple);
+    }
+  }
+
+  &__insideField {
+    width: calc(100% - 24px);
+    border: none;
+    background-color: var(--input-pink);
+    &:focus {
+      outline: none;
+      border-color: none;
+    }
+  }
+
+  &__errorMessage {
+    color: var(--red);
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+.error {
+  outline: var(--red);
+  border-color: var(--red);
+
+  &:focus {
+    outline: var(--purple);
+    border-color: var(--purple);
+  }
+}

@@ -1,0 +1,36 @@
+.accordionItem {
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--light-grey);
+  }
+
+  &__button{
+    display: flex;
+    padding: 32px;
+    width: 100%;
+    min-height: 84px;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: var( --black);
+  }
+
+  &__collapse {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s;
+  }
+  
+  &__collapse.open {
+    height: auto;
+  }
+
+  &__content{
+    padding: 32px;
+    width: 100%;
+    min-height: 84px;
+    font-size: 16px;
+    color: var(--light-brown);
+  }
+}
