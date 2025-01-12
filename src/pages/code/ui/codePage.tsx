@@ -44,13 +44,13 @@ export const CodePage = () => {
   };
 
   const handleSend = () => {
-    const combinedValue = values.join("");
+    const combinedValue = Number(values.join(""));
     setAxiosConfig({
       method: "POST",
       url: `/document/${currentAppId}/sign/code`,
       data: combinedValue,
       headers: {
-        "Content-Type": "text/plain",
+        "Content-Type": "application/json",
       },
     });
   };
