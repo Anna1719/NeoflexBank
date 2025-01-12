@@ -1,0 +1,41 @@
+@use "../../../styles/media" as *;
+
+.notFound {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  @include media-breakpoint(xl) {
+    flex-direction: column;
+  }
+
+  &__right {
+    @include media-breakpoint(xl) {
+      text-align: center;
+    }
+  }
+
+  &__titleFirst {
+    color: var(--black);
+    font-size: 30px;
+    font-weight: 600;
+  }
+
+  &__titleSecond {
+    color: var(--black);
+    font-size: 30px;
+    font-weight: 500;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 32px;
+  }
+
+  &__image {
+    max-width: 526px;
+    max-height: 526px;
+  }
+}

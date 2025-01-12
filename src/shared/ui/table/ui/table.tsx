@@ -1,3 +1,4 @@
+import { ArrowDown, ArrowUp } from "@/icons";
 import style from "./table.module.scss";
 
 interface Column<T> {
@@ -31,9 +32,9 @@ export const Table = <T extends Record<string, unknown>>({
 
   const getArrow = (key: keyof T) => {
     if (sortBy.key === key) {
-      return sortBy.direction === "asc" ? "▲" : "▼";
+      return sortBy.direction === "asc" ? <ArrowUp /> : <ArrowDown />;
     }
-    return "▲";
+    return <ArrowUp />;
   };
 
   return (
@@ -46,7 +47,9 @@ export const Table = <T extends Record<string, unknown>>({
               onClick={() => handleSort(column.key)}
               className={style.table__header}
             >
-              {column.label} {getArrow(column.key)}
+              <div className={style.table__headerContent}>
+                {column.label} {getArrow(column.key)}
+              </div>
             </th>
           ))}
         </tr>
@@ -55,7 +58,7 @@ export const Table = <T extends Record<string, unknown>>({
         {data.map((row, index) => (
           <tr key={index} className={style.table__rowsBody}>
             {columns.map((column) => (
-              <td  className={style.table__bodyItem} key={String(column.key)}>
+              <td className={style.table__bodyItem} key={String(column.key)}>
                 {row[column.key] as React.ReactNode}
               </td>
             ))}

@@ -36,4 +36,5 @@ store.subscribe(() => saveState(store.getState()));
 
 export const clearStore = () => {
   store.dispatch(resetStore());
+  saveState(initialState);
 };

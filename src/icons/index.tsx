@@ -290,3 +290,88 @@ export const CorrectMark = () => (
     />
   </svg>
 );
+
+export const CloseSquare = () => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M18 6L6 18"
+      stroke="#33363F"
+      stroke-width="2"
+      stroke-linecap="square"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M6 6L18 18"
+      stroke="#33363F"
+      stroke-width="2"
+      stroke-linecap="square"
+      stroke-linejoin="round"
+    />
+  </svg>
+);
+
+export const ArrowUp = () => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12.1921 9.23047L15.9065 13.6879C16.3408 14.2089 15.9702 15 15.292 15L8.70803 15C8.02976 15 7.65924 14.2089 8.09346 13.6879L11.8079 9.23047C11.9079 9.11053 12.0921 9.11053 12.1921 9.23047Z"
+      fill="#222222"
+    />
+  </svg>
+);
+
+export const ArrowDown = () => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M11.8079 14.7695L8.09346 10.3121C7.65924 9.79109 8.02976 9 8.70803 9L15.292 9C15.9702 9 16.3408 9.79108 15.9065 10.3121L12.1921 14.7695C12.0921 14.8895 11.9079 14.8895 11.8079 14.7695Z"
+      fill="#222222"
+    />
+  </svg>
+);
+
+export const FileDock = () => (
+  <svg
+    width="60"
+    height="60"
+    viewBox="0 0 60 60"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12.5 9.5C12.5 8.39543 13.3954 7.5 14.5 7.5H29.75C29.8881 7.5 30 7.61193 30 7.75V23C30 24.1046 30.8954 25 32 25H47.25C47.3881 25 47.5 25.1119 47.5 25.25V50.5C47.5 51.6046 46.6046 52.5 45.5 52.5H14.5C13.3954 52.5 12.5 51.6046 12.5 50.5V9.5Z"
+      fill="#2A4157"
+      fill-opacity="0.24"
+    />
+    <path
+      d="M32.5 21.5V8.10355C32.5 7.88083 32.7693 7.76929 32.9268 7.92678L47.0732 22.0732C47.2307 22.2307 47.1192 22.5 46.8964 22.5H33.5C32.9477 22.5 32.5 22.0523 32.5 21.5Z"
+      fill="#222222"
+    />
+    <path
+      d="M21.25 33.75L36.25 33.75"
+      stroke="#222222"
+      stroke-linecap="round"
+    />
+    <path
+      d="M21.25 41.25L33.75 41.25"
+      stroke="#222222"
+      stroke-linecap="round"
+    />
+  </svg>
+);

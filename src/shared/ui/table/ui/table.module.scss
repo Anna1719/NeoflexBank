@@ -10,7 +10,6 @@
 
   &__header {
     color: var(--subtext-grey);
-    gap: 5px;
     font-size: 12px;
     padding: 10px 0;
     text-align: left;
@@ -21,6 +20,12 @@
     @include media-breakpoint(lg) {
       font-size: 10px;
     }
+  }
+
+  &__headerContent{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   &__body {

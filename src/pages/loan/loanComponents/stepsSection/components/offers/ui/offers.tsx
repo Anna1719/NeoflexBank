@@ -3,7 +3,7 @@ import { setCurrentStep, setStepStatus } from "@/store/actions";
 import { AppDispatch } from "@/store/store";
 import { LoanState, Offer } from "@/store/types";
 import { AxiosRequestConfig } from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import style from "./offers.module.scss";
 import { ButtonMain } from "@/shared/ui/buttonMain";
@@ -20,7 +20,7 @@ export const Offers = () => {
     (state: LoanState) => state.applicationData[2]?.status
   );
 
-  const { success } = useAxios<Offer[]>(axiosConfig);
+  const { success, loading } = useAxios<Offer[]>(axiosConfig);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -30,12 +30,15 @@ export const Offers = () => {
       url: "/application/apply",
       data: offer,
     });
-    if (success) {
+  };
+
+  useEffect(() => {
+    if (!loading && success) {
       dispatch(setCurrentStep(3));
       dispatch(setStepStatus(2, { status: "isSent" }));
       dispatch(setStepStatus(3, { status: "isActive" }));
     }
-  };
+  }, [loading, success, dispatch]);
 
   return stepStatus === "isSent" ? (
     <div className={style.offerMessage}>

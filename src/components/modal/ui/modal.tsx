@@ -1,9 +1,10 @@
 import { ButtonMain } from "@/shared/ui/buttonMain";
 import style from "./modal.module.scss";
+import { CloseSquare } from "@/icons";
 
 interface ModalProps {
   isOpen: boolean;
-  stage?: "confirm" | "denied";
+  denied?: boolean;
   onClose: () => void;
   onDenyConfirm?: () => void;
   onGoHome?: () => void;
@@ -11,7 +12,7 @@ interface ModalProps {
 
 export const Modal: React.FC<ModalProps> = ({
   isOpen,
-  stage,
+  denied,
   onClose,
   onDenyConfirm,
   onGoHome,
@@ -22,11 +23,11 @@ export const Modal: React.FC<ModalProps> = ({
     <div className={style.modal}>
       <div className={style.modal__content}>
         <div className={style.modal__title}>Deny application</div>
-        <button className={style.modal__buttonClose} onClick={onClose}>
-          ×
-        </button>
-        {stage === "confirm" ? (
+        {!denied ? (
           <>
+            <button className={style.modal__buttonClose} onClick={onClose}>
+              <CloseSquare />
+            </button>
             <p className={style.modal__message}>
               Are you sure you want to deny the application?
             </p>
@@ -46,6 +47,9 @@ export const Modal: React.FC<ModalProps> = ({
           </>
         ) : (
           <>
+            <button className={style.modal__buttonClose} onClick={onGoHome}>
+              <CloseSquare />
+            </button>
             <p className={style.modal__message}>
               Your application has been denied
             </p>

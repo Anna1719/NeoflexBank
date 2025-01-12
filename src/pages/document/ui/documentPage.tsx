@@ -17,9 +17,12 @@ import { ButtonMain } from "@/shared/ui/buttonMain";
 import { Checkbox } from "@/shared/ui/checkbox";
 import { sortData } from "@/utils/sortData";
 import { setCurrentStep, setStepStatus } from "@/store/actions";
-import { AppDispatch } from "@/store/store";
+import { AppDispatch, clearStore } from "@/store/store";
+import { useValidateApplicationId } from "@/shared/hooks/useValidateApplicationId";
 
 export const DocumentPage = () => {
+  useValidateApplicationId();
+
   const navigate = useNavigate();
 
   const currentAppId = useSelector((state: LoanState) => state.applicationId);
@@ -35,6 +38,7 @@ export const DocumentPage = () => {
 
   const [isChecked, setIsChecked] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isDenied, setIsDenied] = useState(false);
   const [axiosConfig, setAxiosConfig] = useState<AxiosRequestConfig | null>(
     null
   );
@@ -79,13 +83,26 @@ export const DocumentPage = () => {
     setModalOpen(true);
   };
 
+  const handleDenyConfirm = () => {
+    setAxiosConfig({
+      method: "POST",
+      url: `/application/${currentAppId}/deny`,
+    });
+    setIsDenied(true);
+  };
+
+  const handleGoHome = () => {
+    clearStore();
+    navigate("/");
+  }
+
   useEffect(() => {
-    if (success) {
+    if (success && !isDenied) {
       dispatch(setCurrentStep(5));
       dispatch(setStepStatus(4, { status: "isSent" }));
       dispatch(setStepStatus(5, { status: "isActive" }));
     }
-  }, [success, dispatch]);
+  }, [success, dispatch, isDenied]);
 
   if (sending) {
     return (
@@ -144,9 +161,10 @@ export const DocumentPage = () => {
       </div>
       {isModalOpen && (
         <Modal
+          denied={isDenied}
           isOpen={isModalOpen}
-          onGoHome={() => navigate("/")}
-          onDenyConfirm={() => {}}
+          onGoHome={handleGoHome}
+          onDenyConfirm={handleDenyConfirm}
           onClose={() => setModalOpen(false)}
         />
       )}

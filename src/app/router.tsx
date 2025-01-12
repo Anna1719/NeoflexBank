@@ -5,6 +5,9 @@ import { MainLayout } from "@/layouts";
 import { ROUTES } from "@/utils/routesInfo";
 import { ApplicationForm } from "@/pages/application/ui/applicationPage";
 import { DocumentPage } from "@/pages/document";
+import { NotFound } from "@/pages/notFound";
+import { CodePage } from "@/pages/code";
+import { SignPage } from "@/pages/sign";
 
 const routes = [
   {
@@ -29,11 +32,15 @@ const routes = [
       },
       {
         path: ROUTES.SIGN,
-        element: <></>,
+        element: <SignPage/>,
       },
       {
         path: ROUTES.CODE,
-        element: <></>,
+        element: <CodePage/>,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },

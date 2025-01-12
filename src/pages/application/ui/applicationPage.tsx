@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { transformData } from "@/utils/formUtils/scoringFormData";
 import { setCurrentStep, setStepStatus } from "@/store/actions";
 import { SuccessMessage } from "@/shared/ui/successMessage";
+import { useValidateApplicationId } from "@/shared/hooks/useValidateApplicationId";
 
 export const ApplicationForm = () => {
   const {
@@ -25,6 +26,8 @@ export const ApplicationForm = () => {
     reset,
     formState: { errors, isSubmitted, isSubmitSuccessful },
   } = useForm<ScoringFormData>({});
+
+  useValidateApplicationId();
 
   const [axiosConfig, setAxiosConfig] = useState<AxiosRequestConfig | null>(
     null

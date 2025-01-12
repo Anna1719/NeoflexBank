@@ -7,8 +7,6 @@ import { store } from "@/store/store";
 
 import "@/styles/index.scss";
 
-
-
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>

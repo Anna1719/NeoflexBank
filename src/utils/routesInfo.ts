@@ -1,6 +1,9 @@
 export enum ROUTES {
   HOME = "/",
   CREDIT = "loan",
+  PRODUCT = "/product",
+  ACCOUNT = "/account",
+  RESOURSES = "/resourses",
   APPLICATION = "loan/:applicationId",
   DOCUMENT = "loan/:applicationId/document",
   SIGN = "loan/:applicationId/document/sign",
