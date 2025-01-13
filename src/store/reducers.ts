@@ -6,11 +6,11 @@ export const initialState: LoanState = {
   currentStep: 1,
   applicationData: {
     1: { status: "isActive" },
-    2: { status: "isNotOpen" },
-    3: { status: "isNotOpen" },
-    4: { status: "isNotOpen" },
-    5: { status: "isNotOpen" },
-    6: { status: "isNotOpen" },
+    2: { status: "isStepNotActive" },
+    3: { status: "isStepNotActive" },
+    4: { status: "isStepNotActive" },
+    5: { status: "isStepNotActive" },
+    6: { status: "isStepNotActive" },
   },
 };
 
@@ -41,6 +41,8 @@ export const loanReducer = (
         },
       };
     }
+    case "SYNC_STATE":
+      return { ...action.payload };
 
     default:
       return state;

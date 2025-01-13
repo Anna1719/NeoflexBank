@@ -1,6 +1,7 @@
 import style from "./buttonMain.module.scss";
 import cn from "classnames";
 
+// Радиус и ширина теперь принимают числовые значеия
 type TProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   radius?: number;
   width?: number;

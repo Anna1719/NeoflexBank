@@ -1,6 +1,6 @@
 import { ButtonMain } from "@/shared/ui/buttonMain";
 import style from "./modal.module.scss";
-import { CloseSquare } from "@/icons";
+import { CloseSquare } from "@/icons/CloseSquare";
 
 interface ModalProps {
   isOpen: boolean;

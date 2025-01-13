@@ -14,6 +14,9 @@ interface PrescoringTopProps {
   errors: FieldErrors<PrescopingFormData>;
   register: UseFormRegister<PrescopingFormData>;
 }
+// Числа вынесены в константы
+const MIN_CREDIT_AMOUNT = 150000;
+const MAX_CREDIT_AMOUNT = 600000;
 
 export const PrescoringTop: React.FC<PrescoringTopProps> = ({
   amount,
@@ -42,18 +45,18 @@ export const PrescoringTop: React.FC<PrescoringTopProps> = ({
             register={register(PrescopingFormFields.amount, {
               required: "Choose the amount",
               min: {
-                value: 15000,
-                message: "Amount cannot be lower than 15 000",
+                value: MIN_CREDIT_AMOUNT,
+                message: "Amount cannot be lower than " + MIN_CREDIT_AMOUNT.toLocaleString("ru"),
               },
               max: {
-                value: 600000,
-                message: "Amount cannot be higher than 600 000",
+                value: MAX_CREDIT_AMOUNT,
+                message: "Amount cannot be higher than " + MAX_CREDIT_AMOUNT.toLocaleString("ru"),
               },
             })}
           />
           <div className={style.top__inputSubWrapper}>
-            <span className={style.top__inputSubtext}>150 00</span>
-            <span className={style.top__inputSubtext}>600 000</span>
+            <span className={style.top__inputSubtext}>{MIN_CREDIT_AMOUNT.toLocaleString("ru")}</span>
+            <span className={style.top__inputSubtext}>{MAX_CREDIT_AMOUNT.toLocaleString("ru")}</span>
           </div>
         </div>
       </div>

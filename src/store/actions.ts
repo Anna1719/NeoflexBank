@@ -6,6 +6,7 @@ import {
   ResetStoreAction,
   StepStatus,
   SetStepStatusAction,
+  LoanState,
 } from "./types";
 
 export const setApplicationId = (
@@ -35,4 +36,14 @@ export const setStepStatus = (
 
 export const resetStore = (): ResetStoreAction => ({
   type: "RESET_STORE",
+});
+
+export interface SyncStateAction {
+  type: "SYNC_STATE";
+  payload: LoanState;
+}
+
+export const syncState = (state: LoanState): SyncStateAction => ({
+  type: "SYNC_STATE",
+  payload: state,
 });

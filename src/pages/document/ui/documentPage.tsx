@@ -11,31 +11,14 @@ import { Modal } from "@/components/modal";
 import { useNavigate } from "react-router";
 import { LoanState } from "@/store/types";
 import { useDispatch, useSelector } from "react-redux";
-import { Loader } from "@/shared/ui/loader";
-import { SuccessMessage } from "@/shared/ui/successMessage";
 import { ButtonMain } from "@/shared/ui/buttonMain";
 import { Checkbox } from "@/shared/ui/checkbox";
 import { sortData } from "@/utils/sortData";
 import { setCurrentStep, setStepStatus } from "@/store/actions";
 import { AppDispatch, clearStore } from "@/store/store";
-import { useValidateApplicationId } from "@/shared/hooks/useValidateApplicationId";
+import { RenderBasedOnStatus } from "@/shared/ui/renderBasedOnStatus";
 
 export const DocumentPage = () => {
-  useValidateApplicationId();
-
-  const navigate = useNavigate();
-
-  const currentAppId = useSelector((state: LoanState) => state.applicationId);
-  const stepStatus = useSelector(
-    (state: LoanState) => state.applicationData[4]?.status
-  );
-
-  const { getPaymentSchedule } = useApplicationData();
-  const paymentSchedule = useMemo(
-    () => getPaymentSchedule() || [],
-    [getPaymentSchedule]
-  );
-
   const [isChecked, setIsChecked] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
   const [isDenied, setIsDenied] = useState(false);
@@ -43,7 +26,17 @@ export const DocumentPage = () => {
     null
   );
 
-  const { loading: sending, success } = useAxios(axiosConfig);
+  const navigate = useNavigate();
+
+  const currentAppId = useSelector((state: LoanState) => state.applicationId);
+
+  const { getPaymentSchedule } = useApplicationData();
+  const paymentSchedule = useMemo(
+    () => getPaymentSchedule() || [],
+    [getPaymentSchedule]
+  );
+
+  const { loading: sending, success, error } = useAxios(axiosConfig);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -94,7 +87,7 @@ export const DocumentPage = () => {
   const handleGoHome = () => {
     clearStore();
     navigate("/");
-  }
+  };
 
   useEffect(() => {
     if (success && !isDenied) {
@@ -102,72 +95,63 @@ export const DocumentPage = () => {
       dispatch(setStepStatus(4, { status: "isSent" }));
       dispatch(setStepStatus(5, { status: "isActive" }));
     }
-  }, [success, dispatch, isDenied]);
+  }, [success, dispatch, isDenied, paymentSchedule]);
 
-  if (sending) {
-    return (
-      <div className={style.documentPage}>
-        <div className={style.documentPage__loaderCenter}>
-          <Loader />
+  return (
+    <RenderBasedOnStatus
+      loading={sending}
+      step={4}
+      error={error || paymentSchedule.length===0}
+    >
+      <section className={style.documentPage}>
+        <div className={style.documentPage__top}>
+          <h2 className={style.documentPage__title}>Payment Schedule</h2>
+          <p className={style.documentPage__subtitle}>Step 3 of 5</p>
         </div>
-      </div>
-    );
-  }
-
-  return stepStatus === "isSent" ? (
-    <SuccessMessage
-      title="Documents are formed"
-      subtitle="Documents for signing have been sent to your email"
-    />
-  ) : (
-    <div className={style.documentPage}>
-      <div className={style.documentPage__top}>
-        <h2 className={style.documentPage__title}>Payment Schedule</h2>
-        <p className={style.documentPage__subtitle}>Step 3 of 5</p>
-      </div>
-      <Table
-        data={sortedData}
-        columns={columns}
-        onSort={handleSort}
-        sortBy={sortBy}
-      />
-      <div className={style.documentPage__actions}>
-        <ButtonMain
-          radius={8}
-          height={40}
-          width={96}
-          color="red"
-          onClick={handleDeny}
-        >
-          Deny
-        </ButtonMain>
-        <div className={style.documentPage__agreementWrapper}>
-          <Checkbox
-            id="paymentAgree"
-            label="I agree with the payment schedule"
-            checked={isChecked}
-            onChange={setIsChecked}
-          />
+        <Table
+          data={sortedData}
+          columns={columns}
+          onSort={handleSort}
+          sortBy={sortBy}
+        />
+        <div className={style.documentPage__actions}>
           <ButtonMain
             radius={8}
             height={40}
             width={96}
-            disabled={!isChecked || sending}
-            onClick={handleSend}
+            color="red"
+            onClick={handleDeny}
           >
-            Send
+            Deny
           </ButtonMain>
+          <div className={style.documentPage__agreementWrapper}>
+            <Checkbox
+              id="paymentAgree"
+              label="I agree with the payment schedule"
+              checked={isChecked}
+              onChange={setIsChecked}
+            />
+            <ButtonMain
+              radius={8}
+              height={40}
+              width={96}
+              disabled={!isChecked || sending}
+              onClick={handleSend}
+            >
+              Send
+            </ButtonMain>
+          </div>
         </div>
-      </div>
-      {isModalOpen && (
-        <Modal
-          denied={isDenied}
-          isOpen={isModalOpen}
-          onGoHome={handleGoHome}
-          onDenyConfirm={handleDenyConfirm}
-          onClose={() => setModalOpen(false)}
-        />
-      )}
-    </div>
+        {isModalOpen && (
+          <Modal
+            denied={isDenied}
+            isOpen={isModalOpen}
+            onGoHome={handleGoHome}
+            onDenyConfirm={handleDenyConfirm}
+            onClose={() => setModalOpen(false)}
+          />
+        )}
+      </section>
+    </RenderBasedOnStatus>
   );
 };

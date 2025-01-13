@@ -1,5 +1,9 @@
-import { BagIcon, CalendarIcon, CardIcon, ClockIcon, MoneyIcon } from "@/icons";
+import { BagIcon } from "@/icons/BagIcon";
 import style from "./aboutCard.module.scss";
+import { MoneyIcon } from "@/icons/MoneyIcon";
+import { CalendarIcon } from "@/icons/CalendarIcon";
+import { ClockIcon } from "@/icons/ClockIcon";
+import { CardIcon } from "@/icons/CardIcon";
 
 const aboutCardItems = [
   {

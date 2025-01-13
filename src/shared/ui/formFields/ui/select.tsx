@@ -1,5 +1,5 @@
 import { UseFormRegisterReturn } from "react-hook-form";
-import { Label } from "./label";
+import { Label } from "../label";
 import style from "./mainField.module.scss";
 import cn from "classnames";
 import { selectorType } from "@/utils/general";

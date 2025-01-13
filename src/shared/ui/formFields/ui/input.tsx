@@ -1,17 +1,18 @@
 import { UseFormRegisterReturn } from "react-hook-form";
-import { Label } from "./label";
+import { Label } from "../label";
 import style from "./mainField.module.scss";
 import cn from "classnames";
-import { ErrorMark, CorrectMark } from "@/icons";
+import { ErrorMark } from "@/icons/ErrorMark";
+import { CorrectMark } from "@/icons/CorrectMark";
 
 type InputProps = {
-  sub: boolean;
+  sub: boolean | undefined;
   id: string;
   label: string;
   type?: string;
   req?: boolean;
   placeholder?: string;
-  error?: string;
+  error?: string ;
   register: UseFormRegisterReturn;
   formatter?: (value: string) => string;
 };

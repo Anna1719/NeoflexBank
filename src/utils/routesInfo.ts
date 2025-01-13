@@ -4,10 +4,10 @@ export enum ROUTES {
   PRODUCT = "/product",
   ACCOUNT = "/account",
   RESOURSES = "/resourses",
-  APPLICATION = "loan/:applicationId",
-  DOCUMENT = "loan/:applicationId/document",
-  SIGN = "loan/:applicationId/document/sign",
-  CODE = "loan/:applicationId/code"
+  APPLICATION = ":applicationId",
+  DOCUMENT = ":applicationId/document",
+  SIGN = ":applicationId/document/sign",
+  CODE = ":applicationId/code"
 }
 export type stepRouting = {
   step: number;

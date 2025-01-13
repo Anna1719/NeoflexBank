@@ -8,6 +8,7 @@ import { DocumentPage } from "@/pages/document";
 import { NotFound } from "@/pages/notFound";
 import { CodePage } from "@/pages/code";
 import { SignPage } from "@/pages/sign";
+import { isValidApplicationId } from "@/utils/isValidApplicationId";
 
 const routes = [
   {
@@ -20,23 +21,33 @@ const routes = [
       },
       {
         path: ROUTES.CREDIT,
-        element: <LoanPage />,
-      },
-      {
-        path: ROUTES.APPLICATION,
-        element: <ApplicationForm />,
-      },
-      {
-        path: ROUTES.DOCUMENT,
-        element: <DocumentPage />,
-      },
-      {
-        path: ROUTES.SIGN,
-        element: <SignPage/>,
-      },
-      {
-        path: ROUTES.CODE,
-        element: <CodePage/>,
+        children: [
+          {
+            loader: async () => isValidApplicationId(),
+            children: [
+              {
+                element: <LoanPage />,
+                index: true,
+              },
+              {
+                path: ROUTES.APPLICATION,
+                element: <ApplicationForm />,
+              },
+              {
+                path: ROUTES.DOCUMENT,
+                element: <DocumentPage />,
+              },
+              {
+                path: ROUTES.SIGN,
+                element: <SignPage />,
+              },
+              {
+                path: ROUTES.CODE,
+                element: <CodePage />,
+              },
+            ],
+          },
+        ],
       },
       {
         path: "*",

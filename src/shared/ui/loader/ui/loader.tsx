@@ -1,11 +1,13 @@
 import style from "./loader.module.scss";
 
-export const Loader = () => <span className={style.loader}></span>;
+// Лоадер изменен, оверлей убран
 
-export const LoaderOverlay = () => (
-  <div className={style.overlay}>
+export const Loader = () => (
+  <div className={style.loader}>
+  <div className={style.loader__overlay}>
     <div>
-      <span className={style.loader}></span>
+      <span className={style.loader__content}></span>
     </div>
+  </div>
   </div>
 );

@@ -1,0 +1,14 @@
+.offerItem {
+  margin-top: 32px;
+  margin-bottom: 90px;
+
+  &__content {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 14px 0;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}

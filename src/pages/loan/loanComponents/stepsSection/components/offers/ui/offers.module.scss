@@ -1,4 +1,4 @@
-@use "../../../../../../../styles/media" as *;
+@use "@/styles/media" as *;
 
 .offerList {
   max-width: var(--content-width);
@@ -26,39 +26,5 @@
     &:hover {
       border: 3px solid var(--blue);
     }
-  }
-
-  &__text {
-    margin-top: 32px;
-    margin-bottom: 90px;
-  }
-
-  &__textContent {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    gap: 10px;
-    margin: 14px 0;
-    font-size: 16px;
-    font-weight: 500;
-  }
-}
-
-.offerMessage {
-  text-align: center;
-  padding-bottom: 18px;
-  border: 2px solid var(--purple);
-  border-radius: 16px;
-  margin-bottom: 96px;
-  &__title {
-    color: var(--black);
-    font-size: 30px;
-    font-weight: 600;
-  }
-
-  &__subtitle {
-    color: var(--subtext-grey);
-    font-size: 16px;
-    font-weight: 500;
   }
 }

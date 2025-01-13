@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import style from "./currencyRates.module.scss";
-import { BankLogo } from "@/icons";
+import { BankLogo } from "@/icons/BankLogo";
 import { fetchExchangeRates } from "../api/currencyRequest";
 
 const currencies = ["USD", "CNY", "CHF", "EUR", "JPY", "TRY"];

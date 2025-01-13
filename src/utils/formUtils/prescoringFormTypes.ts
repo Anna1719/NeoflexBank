@@ -1,4 +1,4 @@
-import { selectorType } from "./general";
+import { selectorType } from "../general";
 
 export type PrescopingFormData = {
   amount: number;

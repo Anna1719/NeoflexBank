@@ -1,5 +1,5 @@
 export interface StepStatus {
-  status: 'isNotOpen' | 'isActive' | 'isSent';
+  status: 'isStepNotActive' | 'isActive' | 'isSent';
 }
 
 export interface LoanState {
@@ -46,9 +46,15 @@ export interface ResetStoreAction {
   type: "RESET_STORE";
 }
 
+export interface SyncStateAction {
+  type: "SYNC_STATE";
+  payload: LoanState;
+}
+
 export type LoanAction =
   | SetApplicationIdAction
   | SetOffersAction
   | SetCurrentStepAction
   | SetStepStatusAction
-  | ResetStoreAction;
+  | ResetStoreAction
+  | SyncStateAction;

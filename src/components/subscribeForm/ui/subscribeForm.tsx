@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import style from "./subscribeForm.module.scss";
-import { SendEmail, EmailLogo } from "@/icons";
-import { getSubscribeConfig, SubscribeResponse } from "../api/getSubscribeConfig";
+import { SendEmail } from "@/icons/SendEmail";
+import {
+  getSubscribeConfig,
+  SubscribeResponse,
+} from "../api/getSubscribeConfig";
 import { useAxios } from "@/shared/hooks/useAxios";
+import { EmailLogo } from "@/icons/EmailLogo";
 
 export const SubscribeForm = () => {
-  const [email, setEmail] = useState<string>("");
+  const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState<boolean>(() => {
     return localStorage.getItem("isSubscribed") === "true";
   });
@@ -13,7 +17,7 @@ export const SubscribeForm = () => {
   const [axiosConfig, setAxiosConfig] = useState<null | ReturnType<
     typeof getSubscribeConfig
   >>(null);
-  
+
   const { loading, error, data } = useAxios<SubscribeResponse>(axiosConfig);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,11 +37,15 @@ export const SubscribeForm = () => {
     }
   }, [data]);
 
-  return isSubscribed ? (
-    <div className={style.subscribeForm__message}>
-      You are already subscribed to the bank's newsletter.
-    </div>
-  ) : (
+  if (isSubscribed)
+    // Вынесено в отдельное условие
+    return (
+      <div className={style.subscribeForm__message}>
+        You are already subscribed to the bank's newsletter.
+      </div>
+    );
+
+  return (
     <form className={style.subscribeForm} onSubmit={handleSubmit} noValidate>
       <div className={style.subscribeForm__inputField}>
         <EmailLogo />

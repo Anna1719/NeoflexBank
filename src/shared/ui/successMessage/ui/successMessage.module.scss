@@ -20,4 +20,10 @@
   &__button{
     margin-top: 32px;
   }
+
+  &__border{
+    padding: 18px 0 24px 0;
+    border: 2px solid var(--purple);
+    border-radius: 16px;
+  }
 }
