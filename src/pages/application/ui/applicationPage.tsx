@@ -1,6 +1,5 @@
 import style from "./applicationPage.module.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Select, Input } from "@/shared/ui/formFields";
 import { useEffect, useState } from "react";
 import { ScoringFormData } from "@/utils/formUtils/scoringFormTypes";
 import {
@@ -16,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { transformData } from "@/utils/formUtils/scoringFormData";
 import { setCurrentStep, setStepStatus } from "@/store/actions";
 import { RenderBasedOnStatus } from "@/shared/ui/renderBasedOnStatus";
+import { FormFieldRenderer } from "@/shared/ui/formFieldRender/formFieldRenderer";
 
 export const ApplicationForm = () => {
   const {
@@ -66,31 +66,13 @@ export const ApplicationForm = () => {
           <div className={style.scoring__bottomUp}>
             {Object.keys(formFieldsFirst).map((key) => {
               const field = formFieldsFirst[key];
-              if (field.type === "select") {
-                return (
-                  <Select
-                    key={key}
-                    req={field.req}
-                    id={field.id}
-                    label={field.label}
-                    options={field.options}
-                    error={errors[field.id]?.message}
-                    register={register(field.id, field.validation)}
-                  />
-                );
-              }
               return (
-                <Input
-                  sub={isSubmitted}
+                <FormFieldRenderer
                   key={key}
-                  req={field.req}
-                  id={field.id}
-                  label={field.label}
-                  type={field.type}
-                  placeholder={field.placeholder}
-                  error={errors[field.id]?.message}
-                  register={register(field.id, field.validation)}
-                  formatter={field.formatter}
+                  field={field}
+                  errors={errors}
+                  register={register}
+                  isSubmitted={isSubmitted}
                 />
               );
             })}
@@ -99,31 +81,13 @@ export const ApplicationForm = () => {
           <div className={style.scoring__bottomDown}>
             {Object.keys(formFieldsSecond).map((key) => {
               const field = formFieldsSecond[key];
-              if (field.type === "select") {
-                return (
-                  <Select
-                    key={key}
-                    req={field.req}
-                    id={field.id}
-                    label={field.label}
-                    options={field.options}
-                    error={errors[field.id]?.message}
-                    register={register(field.id, field.validation)}
-                  />
-                );
-              }
               return (
-                <Input
-                  sub={isSubmitted}
+                <FormFieldRenderer
                   key={key}
-                  req={field.req}
-                  id={field.id}
-                  label={field.label}
-                  type={field.type}
-                  placeholder={field.placeholder}
-                  error={errors[field.id]?.message}
-                  register={register(field.id, field.validation)}
-                  formatter={field.formatter}
+                  field={field}
+                  errors={errors}
+                  register={register}
+                  isSubmitted={isSubmitted}
                 />
               );
             })}

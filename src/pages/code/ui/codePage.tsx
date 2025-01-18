@@ -9,6 +9,7 @@ import { setStepStatus } from "@/store/actions";
 import { RenderBasedOnStatus } from "@/shared/ui/renderBasedOnStatus";
 
 const PASSWORD_LENGTH = 4;
+const REG_NUMBER_CHECK = /^\d*$/;
 
 export const CodePage = () => {
   const [values, setValues] = useState<string[]>(
@@ -27,7 +28,7 @@ export const CodePage = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const handleChange = (value: string, index: number) => {
-    if (!/^\d*$/.test(value)) return;
+    if (!REG_NUMBER_CHECK.test(value)) return;
 
     const newValues = [...values];
     newValues[index] = value;
@@ -54,7 +55,11 @@ export const CodePage = () => {
     e: React.KeyboardEvent<HTMLInputElement>,
     index: number
   ) => {
-    if (e.key === "Backspace" && !values[index] && index > 0) {
+    const isBackspacePressed = e.key === "Backspace";
+    const isCurrentValueEmptyAndBackspace =
+      !values[index] && isBackspacePressed;
+
+    if (isCurrentValueEmptyAndBackspace && index > 0) {
       const newValues = [...values];
       newValues[index - 1] = "";
       setValues(newValues);

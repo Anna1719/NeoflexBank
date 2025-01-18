@@ -8,22 +8,10 @@ import {
   dependantOptions,
 } from "./scoringFormTypes";
 import { formatDate, formatDivisionCode } from "../formatters";
-import { selectorType } from "../general";
 import { validatePassportDate } from "../validateDate";
+import { FormField } from "./formFieldTypes";
 
-export type FormField = {
-  id: keyof ScoringFormData;
-  req: boolean;
-  label: string;
-  type: string;
-  placeholder?: string;
-  options?: selectorType[];
-  validation?: Record<string, unknown>;
-  order?: number;
-  formatter?: (value: string) => string;
-};
-
-export const formFieldsFirst: Record<string, FormField> = {
+export const formFieldsFirst: Record<string, FormField<ScoringFormData>> = {
   gender: {
     id: ScoringFormFields.gender,
     req: true,
@@ -83,7 +71,7 @@ export const formFieldsFirst: Record<string, FormField> = {
   },
 };
 
-export const formFieldsSecond: Record<string, FormField> = {
+export const formFieldsSecond: Record<string, FormField<ScoringFormData>> = {
   employmentStatus: {
     id: ScoringFormFields.employmentStatus,
     req: true,

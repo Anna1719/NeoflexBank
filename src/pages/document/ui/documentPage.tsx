@@ -17,6 +17,7 @@ import { sortData } from "@/utils/sortData";
 import { setCurrentStep, setStepStatus } from "@/store/actions";
 import { AppDispatch, clearStore } from "@/store/store";
 import { RenderBasedOnStatus } from "@/shared/ui/renderBasedOnStatus";
+import { documentTableColumns } from "@/utils/tableColumnNames";
 
 export const DocumentPage = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -39,15 +40,6 @@ export const DocumentPage = () => {
   const { loading: sending, success, error } = useAxios(axiosConfig);
 
   const dispatch = useDispatch<AppDispatch>();
-
-  const columns: { key: keyof PaymentSchedule; label: string }[] = [
-    { key: "number", label: "NUMBER" },
-    { key: "date", label: "DATE" },
-    { key: "totalPayment", label: "TOTAL PAYMENT" },
-    { key: "interestPayment", label: "INTEREST PAYMENT" },
-    { key: "debtPayment", label: "DEBT PAYMENT" },
-    { key: "remainingDebt", label: "REMAINING DEBT" },
-  ];
 
   const [sortBy, setSortBy] = useState<{
     key: keyof PaymentSchedule;
@@ -110,7 +102,7 @@ export const DocumentPage = () => {
         </div>
         <Table
           data={sortedData}
-          columns={columns}
+          columns={documentTableColumns}
           onSort={handleSort}
           sortBy={sortBy}
         />

@@ -3,23 +3,11 @@ import {
   PrescopingFormFields,
   termOptions,
 } from "./prescoringFormTypes";
-import { selectorType } from "../general";
 import { formatDate } from "../formatters";
 import { validateDate } from "../validateDate";
+import { FormField } from "./formFieldTypes";
 
-export type FormField = {
-  id: keyof PrescopingFormData;
-  req: boolean;
-  label: string;
-  type: string;
-  placeholder?: string;
-  options?: selectorType[];
-  validation?: Record<string, unknown>;
-  order?: number;
-  formatter?: (value: string) => string;
-};
-
-export const formFields: Record<string, FormField> = {
+export const formFields: Record<string, FormField<PrescopingFormData>> = {
   lastName: {
     id: PrescopingFormFields.lastName,
     req: true,

@@ -1,6 +1,5 @@
 import style from "./prescoring.module.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Select, Input } from "@/shared/ui/formFields";
 import { formPrescoringData } from "@/utils/formUtils/prescoringDataReshape";
 import { useEffect, useState } from "react";
 import { PrescoringTop } from "../prescoringTop";
@@ -22,6 +21,7 @@ import {
 import { AppDispatch } from "@/store/store";
 import { useDispatch } from "react-redux";
 import { RenderBasedOnStatus } from "@/shared/ui/renderBasedOnStatus";
+import { FormFieldRenderer } from "@/shared/ui/formFieldRender/formFieldRenderer";
 
 export const PrescoringForm = () => {
   const {
@@ -59,8 +59,6 @@ export const PrescoringForm = () => {
     }
   }, [isSubmitSuccessful, reset, data, dispatch]);
 
-  // Условия рендеринга вынесены в отдельный компонент
-
   return (
     <div className={style.prescoring}>
       <RenderBasedOnStatus step={1} loading={loading} error={error}>
@@ -77,35 +75,16 @@ export const PrescoringForm = () => {
             className={style.prescoring__form}
           >
             {Object.keys(formFields).map((key) => {
-              // Object.entries убраны
               const field = formFields[key];
-              if (field.type === "select") {
                 return (
-                  <Select
+                  <FormFieldRenderer
                     key={key}
-                    req={field.req}
-                    id={field.id}
-                    label={field.label}
-                    options={field.options}
-                    error={errors[field.id]?.message}
-                    register={register(field.id, field.validation)}
+                    field={field}
+                    errors={errors}
+                    register={register}
+                    isSubmitted={isSubmitted}
                   />
                 );
-              }
-              return (
-                <Input
-                  sub={isSubmitted}
-                  key={key}
-                  req={field.req}
-                  id={field.id}
-                  label={field.label}
-                  type={field.type}
-                  placeholder={field.placeholder}
-                  error={errors[field.id]?.message}
-                  register={register(field.id, field.validation)}
-                  formatter={field.formatter}
-                />
-              );
             })}
           </form>
           <div className={style.prescoring__buttonWrapper}>
