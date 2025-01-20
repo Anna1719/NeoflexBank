@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { ROUTES } from "@/app/routes";
+import { Link, NavLink } from "react-router-dom";
+import { ROUTES } from "@/utils/routesInfo";
 import { ButtonMain } from "@/shared/ui/buttonMain";
 import style from "./header.module.scss";
 
@@ -21,15 +21,15 @@ export const Header = () => {
           <ul className={style.header__navlist}>
             {routeConfig.map((route) => (
               <li key={route.id} className={style.header__naviItem}>
-                <Link to={route.link} className={style.header__navItemLink}>
+                <NavLink to={route.link} className={style.header__navItemLink}>
                   {route.title}
-                </Link>
+                </NavLink>
               </li>
             ))}
           </ul>
         </nav>
         <div className={style.header__button}>
-          <ButtonMain type="button" radius="16">
+          <ButtonMain type="button" radius={16}>
             Online Bank
           </ButtonMain>
         </div>

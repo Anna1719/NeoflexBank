@@ -4,9 +4,14 @@
   border: none;
   padding: 16px;
   font-size: 16px;
+  min-height: 50px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
+
+  &:disabled {
+    cursor:not-allowed;
+  }
 
   &:hover {
     background-color: var(--light-blue);
@@ -26,11 +31,44 @@
 }
 
 .buttonWidth-148 {
-  min-width: 148px;
+  width: 148px;
   text-align: center;
+}
+
+.buttonWidth-192 {
+  width: 192px;
+  text-align: center;
+}
+
+.buttonWidth-96 {
+  width: 96px;
+  text-align: center;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.buttonWidth-160 {
+  width: 160px;
+  text-align: center;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 .buttonWidth-0 {
   min-width: fit-content;
   text-align: center;
+}
+
+.buttonColor-red {
+  background-color: var(--button-red);
+
+  &:hover {
+    background-color: var(--red);
+  }
+}
+
+.buttonHeight-40{
+  min-height: 40px;
+  height: 40px;
+  padding: 0 16px;
 }

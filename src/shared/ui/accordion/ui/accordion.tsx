@@ -10,12 +10,18 @@ export type AccordionListItem = {
 export const Accordion = ({ accList }: { accList: AccordionListItem[] }) => {
   const [openId, setId] = useState<number | null>(null);
 
+
+  // Функция вынесена из разметки
+  const handleItemClick = (id: number) => {
+    setId((prevId) => (prevId === id ? null : id));
+  };
+
   return (
     <ul className={style.accordion}>
       {accList.map((item) => {
         return (
           <AccordionItem
-            onClick={() => (item.id === openId ? setId(null) : setId(item.id))}
+            onClick={() => handleItemClick(item.id)}
             accItem={item.accItem}
             isOpen={item.id === openId}
             key={item.id}

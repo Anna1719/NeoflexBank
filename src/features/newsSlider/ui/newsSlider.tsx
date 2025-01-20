@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import style from "./newsSlider.module.scss";
-import { ButtonLeft, ButtonRight } from "@/icons";
+import { ButtonLeft} from "@/icons/ButtonLeft";
 import { NewsList } from "../api/newsRequest";
+import { ButtonRight } from "@/icons/ButtonRight";
 
 const SCROLL_STEP = 500;
 const NEWS_NUMBER = 20;

@@ -1,0 +1,29 @@
+.success {
+  width: 100%;
+  min-height: 100%;
+  margin: auto;
+  text-align: center;
+  align-content: center;
+  margin-bottom: 93px;
+  &__title {
+    color: var(--black);
+    font-size: 30px;
+    font-weight: 600;
+  }
+
+  &__subtitle {
+    color: var(--subtext-grey);
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &__button{
+    margin-top: 32px;
+  }
+
+  &__border{
+    padding: 18px 0 24px 0;
+    border: 2px solid var(--purple);
+    border-radius: 16px;
+  }
+}

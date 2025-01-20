@@ -1,3 +1,3 @@
-export { Input } from './input';
-export { Label } from './label';
-export {Select} from "./select";
+export { Label } from './label/ui/label';
+export { Input } from './ui/input';
+export {Select} from "./ui/select";

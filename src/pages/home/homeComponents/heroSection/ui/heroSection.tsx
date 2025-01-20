@@ -1,6 +1,6 @@
 import { ButtonMain } from "@/shared/ui/buttonMain";
 import { Link } from "react-router-dom";
-import { ROUTES } from "@/app/routes";
+import { ROUTES } from "@/utils/routesInfo";
 import { cardImages } from "@/utils/cardImageDdata";
 import style from "./heroSection.module.scss";
 
@@ -12,7 +12,7 @@ export const HeroSection = () => {
           Choose the design you like and apply for card right now
         </h1>
         <Link to={ROUTES.CREDIT} className={style.hero__button}>
-          <ButtonMain type="button" radius={"16"}>
+          <ButtonMain type="button" radius={16}>
             Choose the card
           </ButtonMain>
         </Link>

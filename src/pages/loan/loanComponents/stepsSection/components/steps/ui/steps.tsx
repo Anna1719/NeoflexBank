@@ -1,30 +1,10 @@
 import style from "./steps.module.scss";
 import { Divider } from "@/shared/ui/divider";
 import { DividerStyleSteps } from "@/utils/dividerStyles";
-
-const steps = [
-  {
-    id: 0,
-    number: "1",
-    text: "Fill out an online application - you do not need to visit the bank",
-  },
-  {
-    id: 1,
-    number: "2",
-    text: "Find out the bank's decision immediately after filling out the application",
-  },
-  {
-    id: 2,
-    number: "3",
-    text: "The bank will deliver the card free of charge, wherever convenient, to your city",
-  },
-];
-
-const arrWidth: React.CSSProperties[] = [
-  { width: "250px" },
-  { width: "292px" },
-  { width: "335px" },
-];
+import {
+  stepsProps as steps,
+  stepsArrWidth as arrWidth,
+} from "@/utils/stepSectionProps"; // Вынесла в отдельный файл
 
 export const StepsComponent = () => {
   return (
