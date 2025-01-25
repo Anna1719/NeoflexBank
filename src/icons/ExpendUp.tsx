@@ -1,5 +1,6 @@
 export const ExpendUp = () => (
   <svg
+    data-testid="expend-up"
     width="14"
     height="9"
     viewBox="0 0 14 9"

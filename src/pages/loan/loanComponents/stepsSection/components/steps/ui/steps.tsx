@@ -4,7 +4,7 @@ import { DividerStyleSteps } from "@/utils/dividerStyles";
 import {
   stepsProps as steps,
   stepsArrWidth as arrWidth,
-} from "@/utils/stepSectionProps"; // Вынесла в отдельный файл
+} from "@/utils/stepSectionProps";
 
 export const StepsComponent = () => {
   return (

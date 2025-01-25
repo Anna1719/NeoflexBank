@@ -1,5 +1,6 @@
 export const SendEmail = () => (
   <svg
+    data-testid="send-email-icon"
     width="21"
     height="29"
     viewBox="0 0 21 29"

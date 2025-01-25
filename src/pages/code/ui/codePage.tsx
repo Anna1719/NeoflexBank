@@ -7,6 +7,7 @@ import { useAxios } from "@/shared/hooks/useAxios";
 import { AppDispatch } from "@/store/store";
 import { setStepStatus } from "@/store/actions";
 import { RenderBasedOnStatus } from "@/shared/ui/renderBasedOnStatus";
+import { Loader } from "@/shared/ui/loader";
 
 const PASSWORD_LENGTH = 4;
 const REG_NUMBER_CHECK = /^\d*$/;
@@ -103,32 +104,40 @@ export const CodePage = () => {
   }, [success, dispatch]);
 
   return (
-    <RenderBasedOnStatus loading={loading} step={6}>
-      <section className={style.codePage}>
-        <label className={style.codePage__label}>
-          Please enter confirmation code
-        </label>
-        <div className={style.codePage__codeWrapper}>
-          {values.map((value, index) => (
-            <div key={index} className={style.codePage__inputWrapper}>
-              <input
-                ref={(el) => (inputsRef.current[index] = el!)}
-                type="text"
-                maxLength={1}
-                value={value}
-                onChange={(e) => handleChange(e.target.value, index)}
-                onKeyDown={(e) => handleKeyDown(e, index)}
-                onPaste={handlePaste(index)}
-                className={style.codePage__input}
-              />
-              {!value && <div className={style.codePage__circle}></div>}
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <RenderBasedOnStatus step={6}>
+          <section className={style.codePage}>
+            <label className={style.codePage__label}>
+              Please enter confirmation code
+            </label>
+            <div className={style.codePage__codeWrapper}>
+              {values.map((value, index) => (
+                <div key={index} className={style.codePage__inputWrapper}>
+                  <input
+                    ref={(el) => (inputsRef.current[index] = el!)}
+                    type="text"
+                    maxLength={1}
+                    value={value}
+                    onChange={(e) => handleChange(e.target.value, index)}
+                    onKeyDown={(e) => handleKeyDown(e, index)}
+                    onPaste={handlePaste(index)}
+                    className={style.codePage__input}
+                  />
+                  {!value && <div className={style.codePage__circle}></div>}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        {error && (
-          <div className={style.codePage__error}>Invalid confirmation code</div>
-        )}
-      </section>
-    </RenderBasedOnStatus>
+            {error && (
+              <div className={style.codePage__error}>
+                Invalid confirmation code
+              </div>
+            )}
+          </section>
+        </RenderBasedOnStatus>
+      )}
+    </>
   );
 };

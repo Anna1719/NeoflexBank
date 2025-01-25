@@ -1,7 +1,6 @@
 import { Offer } from "@/store/types";
 import style from "./offerItem.module.scss";
-import { CorrectMark } from "@/icons/CorrectMark";
-import { ErrorMark } from "@/icons/ErrorMark";
+import { ErrorMark, CorrectMark } from "@/icons";
 
 export const OfferItem = ({ offer }: { offer: Offer }) => {
   return (

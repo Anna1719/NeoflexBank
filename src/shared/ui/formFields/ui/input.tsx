@@ -2,8 +2,7 @@ import { UseFormRegisterReturn } from "react-hook-form";
 import { Label } from "../label";
 import style from "./mainField.module.scss";
 import cn from "classnames";
-import { ErrorMark } from "@/icons/ErrorMark";
-import { CorrectMark } from "@/icons/CorrectMark";
+import { ErrorMark, CorrectMark } from "@/icons";
 
 type InputProps = {
   sub: boolean | undefined;

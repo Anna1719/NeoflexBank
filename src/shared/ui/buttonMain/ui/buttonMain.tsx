@@ -1,7 +1,6 @@
 import style from "./buttonMain.module.scss";
 import cn from "classnames";
 
-// Радиус и ширина теперь принимают числовые значеия
 type TProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   radius?: number;
   width?: number;
@@ -10,7 +9,7 @@ type TProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 export const ButtonMain = ({ radius = 16, width = 0, color = "", height = 0,...rest }: TProps) => {
-  const borderRadius = "buttonRadius-" + radius;
+  const buttonRadius = "buttonRadius-" + radius;
   const buttonWidth = "buttonWidth-" + width;
   const buttonColor = "buttonColor-" + color;
   const buttonHeight = "buttonHeight-" + height;
@@ -19,7 +18,7 @@ export const ButtonMain = ({ radius = 16, width = 0, color = "", height = 0,...r
       {...rest}
       className={cn(
         style.buttonMain,
-        style[borderRadius],
+        style[buttonRadius],
         style[buttonWidth],
         style[buttonColor],
         style[buttonHeight],

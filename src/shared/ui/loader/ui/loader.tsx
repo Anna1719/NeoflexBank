@@ -1,7 +1,5 @@
 import style from "./loader.module.scss";
 
-// Лоадер изменен, оверлей убран
-
 export const Loader = () => (
   <div className={style.loader}>
   <div className={style.loader__overlay}>

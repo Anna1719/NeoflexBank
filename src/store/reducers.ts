@@ -1,16 +1,25 @@
 import { LoanState, LoanAction } from "./types";
 
+export enum StepsInfo {
+  Prescoring = 1,
+  Offer = 2,
+  Scoring = 3,
+  Document = 4,
+  Sign = 5,
+  Code = 6,
+}
+
 export const initialState: LoanState = {
   applicationId: null,
   offers: [],
-  currentStep: 1,
+  currentStep: StepsInfo.Prescoring,
   applicationData: {
-    1: { status: "isActive" },
-    2: { status: "isStepNotActive" },
-    3: { status: "isStepNotActive" },
-    4: { status: "isStepNotActive" },
-    5: { status: "isStepNotActive" },
-    6: { status: "isStepNotActive" },
+    [StepsInfo.Prescoring]: { status: "isActive" },
+    [StepsInfo.Offer]: { status: "isStepNotActive" },
+    [StepsInfo.Scoring]: { status: "isStepNotActive" },
+    [StepsInfo.Document]: { status: "isStepNotActive" },
+    [StepsInfo.Sign]: { status: "isStepNotActive" },
+    [StepsInfo.Code]: { status: "isStepNotActive" },
   },
 };
 

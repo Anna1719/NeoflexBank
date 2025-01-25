@@ -2,9 +2,9 @@ import { legacy_createStore as createStore } from "redux";
 import { composeWithDevTools } from "@redux-devtools/extension";
 import { initialState, loanReducer } from "./reducers";
 import { LoanState } from "./types";
-import { resetStore, syncState } from "./actions";
+import { resetStore } from "./actions";
 
-const loadState = (): LoanState | undefined => {
+export const loadState = (): LoanState | undefined => {
   try {
     const serializedState = localStorage.getItem("loanState");
     return serializedState ? JSON.parse(serializedState) : initialState;
@@ -13,7 +13,7 @@ const loadState = (): LoanState | undefined => {
   }
 };
 
-const saveState = (state: LoanState) => {
+export const saveState = (state: LoanState) => {
   try {
     const serializedState = JSON.stringify(state);
     localStorage.setItem("loanState", serializedState);
@@ -34,17 +34,7 @@ export type AppDispatch = typeof store.dispatch;
 
 store.subscribe(() => saveState(store.getState()));
 
-export const clearStore = () => {
-  store.dispatch(resetStore());
+export const clearStore = (storeToClear = store) => {
+  storeToClear.dispatch(resetStore());
   saveState(initialState);
 };
-
-window.addEventListener("storage", (event) => {
-  if (event.key === "loanState") {
-    const serializedState = event.newValue;
-    if (serializedState) {
-      const stateFromStorage: LoanState = JSON.parse(serializedState);
-      store.dispatch(syncState(stateFromStorage));
-    }
-  }
-});

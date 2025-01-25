@@ -13,13 +13,16 @@ export const Checkbox = ({ checked, onChange, label, ...rest }: TProps) => {
   return (
     <div className={style.checkbox}>
       <input
+        id={rest.id}
         {...rest}
         type="checkbox"
         checked={checked}
         onChange={handleChange}
         className={style.checkbox__input}
       />
-      <label htmlFor={rest.id} className={style.checkbox__label}>{label}</label>
+      <label htmlFor={rest.id} className={style.checkbox__label}>
+        {label}
+      </label>
     </div>
   );
 };

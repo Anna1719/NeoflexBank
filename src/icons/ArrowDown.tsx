@@ -1,5 +1,6 @@
 export const ArrowDown = () => (
   <svg
+    data-testid="arrow-down"
     width="24"
     height="24"
     viewBox="0 0 24 24"

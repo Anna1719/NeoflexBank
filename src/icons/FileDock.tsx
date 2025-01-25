@@ -1,5 +1,6 @@
 export const FileDock = () => (
   <svg
+    data-testid="file-dock-icon"
     width="60"
     height="60"
     viewBox="0 0 60 60"

@@ -10,8 +10,6 @@ export type AccordionListItem = {
 export const Accordion = ({ accList }: { accList: AccordionListItem[] }) => {
   const [openId, setId] = useState<number | null>(null);
 
-
-  // Функция вынесена из разметки
   const handleItemClick = (id: number) => {
     setId((prevId) => (prevId === id ? null : id));
   };
