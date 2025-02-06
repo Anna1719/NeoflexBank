@@ -1,5 +1,6 @@
 export const CorrectMark = () => (
   <svg
+    data-testid="correct-mark-icon"
     width="24"
     height="24"
     viewBox="0 0 24 24"

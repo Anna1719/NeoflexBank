@@ -26,12 +26,17 @@ export const Select: React.FC<SelectProps> = ({
     <div className={style.select}>
       <Label text={label} htmlFor={id} required={req} />
       <select
+        id={id}
         className={cn(style.select__field, style[fieldError])}
         {...register}
       >
         {options &&
           options.map((option) => (
-            <option key={option.value} value={option.value} hidden={!option.value}>
+            <option
+              key={option.value}
+              value={option.value}
+              hidden={!option.value}
+            >
               {option.label}
             </option>
           ))}

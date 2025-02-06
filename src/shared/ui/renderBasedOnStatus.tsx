@@ -1,24 +1,22 @@
 import { LoanState } from "@/store/types";
 import { ReactNode } from "react";
 import { useSelector } from "react-redux";
-import { Loader } from "./loader";
 import { SuccessMessage } from "./successMessage";
 import { SuccessMessageText } from "@/utils/successMessageText";
 import { NotFound } from "@/pages/notFound";
 import { ErrorMessage } from "./errorMessage";
 
 type TProps = {
-  loading: boolean;
   step: number;
   error?: Error | boolean | null ;
 };
 
-export const RenderBasedOnStatus = ({ loading, step, error = null, children }: TProps & { children: ReactNode }) => {
+export const RenderBasedOnStatus = ({ step, error = null, children }: TProps & { children: ReactNode }) => {
   const stepStatus = useSelector(
     (state: LoanState) => state.applicationData[step]?.status
   );
 
-  if (loading) return <Loader />;
+  if(error) return <ErrorMessage/>
 
   if (step === 1) return <>{children}</>;
 
@@ -43,8 +41,6 @@ export const RenderBasedOnStatus = ({ loading, step, error = null, children }: T
   if (step >= 3 && step <= 6 && stepStatus === "isStepNotActive") {
     return <NotFound />;
   }
-
-  if(error) return <ErrorMessage/>
 
   return <>{children}</>;
 };

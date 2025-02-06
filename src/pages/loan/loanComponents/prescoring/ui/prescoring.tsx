@@ -22,6 +22,7 @@ import { AppDispatch } from "@/store/store";
 import { useDispatch } from "react-redux";
 import { RenderBasedOnStatus } from "@/shared/ui/renderBasedOnStatus";
 import { FormFieldRenderer } from "@/shared/ui/formFieldRender/formFieldRenderer";
+import { Loader } from "@/shared/ui/loader";
 
 export const PrescoringForm = () => {
   const {
@@ -61,21 +62,26 @@ export const PrescoringForm = () => {
 
   return (
     <div className={style.prescoring}>
-      <RenderBasedOnStatus step={1} loading={loading} error={error}>
-        <PrescoringTop
-          amount={amount}
-          isSubmitted={isSubmitted}
-          errors={errors}
-          register={register}
-        />
-        <div className={style.prescoring__bottom}>
-          <h4 className={style.prescoring__bottomTitle}>Contact Information</h4>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className={style.prescoring__form}
-          >
-            {Object.keys(formFields).map((key) => {
-              const field = formFields[key];
+      {loading ? (
+        <Loader />
+      ) : (
+        <RenderBasedOnStatus step={1} error={error}>
+          <PrescoringTop
+            amount={amount}
+            isSubmitted={isSubmitted}
+            errors={errors}
+            register={register}
+          />
+          <div className={style.prescoring__bottom}>
+            <h4 className={style.prescoring__bottomTitle}>
+              Contact Information
+            </h4>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className={style.prescoring__form}
+            >
+              {Object.keys(formFields).map((key) => {
+                const field = formFields[key];
                 return (
                   <FormFieldRenderer
                     key={key}
@@ -85,15 +91,20 @@ export const PrescoringForm = () => {
                     isSubmitted={isSubmitted}
                   />
                 );
-            })}
-          </form>
-          <div className={style.prescoring__buttonWrapper}>
-            <ButtonMain onClick={handleSubmit(onSubmit)} radius={8} width={148}>
-              Continue
-            </ButtonMain>
+              })}
+            </form>
+            <div className={style.prescoring__buttonWrapper}>
+              <ButtonMain
+                onClick={handleSubmit(onSubmit)}
+                radius={8}
+                width={148}
+              >
+                Continue
+              </ButtonMain>
+            </div>
           </div>
-        </div>
-      </RenderBasedOnStatus>
+        </RenderBasedOnStatus>
+      )}
     </div>
   );
 };

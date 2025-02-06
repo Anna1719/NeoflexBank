@@ -18,6 +18,7 @@ import { setCurrentStep, setStepStatus } from "@/store/actions";
 import { AppDispatch, clearStore } from "@/store/store";
 import { RenderBasedOnStatus } from "@/shared/ui/renderBasedOnStatus";
 import { documentTableColumns } from "@/utils/tableColumnNames";
+import { Loader } from "@/shared/ui/loader";
 
 export const DocumentPage = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -37,7 +38,7 @@ export const DocumentPage = () => {
     [getPaymentSchedule]
   );
 
-  const { loading: sending, success, error } = useAxios(axiosConfig);
+  const { loading, success, error } = useAxios(axiosConfig);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -90,60 +91,65 @@ export const DocumentPage = () => {
   }, [success, dispatch, isDenied, paymentSchedule]);
 
   return (
-    <RenderBasedOnStatus
-      loading={sending}
-      step={4}
-      error={error || paymentSchedule.length===0}
-    >
-      <section className={style.documentPage}>
-        <div className={style.documentPage__top}>
-          <h2 className={style.documentPage__title}>Payment Schedule</h2>
-          <p className={style.documentPage__subtitle}>Step 3 of 5</p>
-        </div>
-        <Table
-          data={sortedData}
-          columns={documentTableColumns}
-          onSort={handleSort}
-          sortBy={sortBy}
-        />
-        <div className={style.documentPage__actions}>
-          <ButtonMain
-            radius={8}
-            height={40}
-            width={96}
-            color="red"
-            onClick={handleDeny}
-          >
-            Deny
-          </ButtonMain>
-          <div className={style.documentPage__agreementWrapper}>
-            <Checkbox
-              id="paymentAgree"
-              label="I agree with the payment schedule"
-              checked={isChecked}
-              onChange={setIsChecked}
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <RenderBasedOnStatus
+          step={4}
+          error={error || paymentSchedule.length === 0}
+        >
+          <section className={style.documentPage}>
+            <div className={style.documentPage__top}>
+              <h2 className={style.documentPage__title}>Payment Schedule</h2>
+              <p className={style.documentPage__subtitle}>Step 3 of 5</p>
+            </div>
+            <Table
+              data={sortedData}
+              columns={documentTableColumns}
+              onSort={handleSort}
+              sortBy={sortBy}
             />
-            <ButtonMain
-              radius={8}
-              height={40}
-              width={96}
-              disabled={!isChecked || sending}
-              onClick={handleSend}
-            >
-              Send
-            </ButtonMain>
-          </div>
-        </div>
-        {isModalOpen && (
-          <Modal
-            denied={isDenied}
-            isOpen={isModalOpen}
-            onGoHome={handleGoHome}
-            onDenyConfirm={handleDenyConfirm}
-            onClose={() => setModalOpen(false)}
-          />
-        )}
-      </section>
-    </RenderBasedOnStatus>
+            <div className={style.documentPage__actions}>
+              <ButtonMain
+                radius={8}
+                height={40}
+                width={96}
+                color="red"
+                onClick={handleDeny}
+              >
+                Deny
+              </ButtonMain>
+              <div className={style.documentPage__agreementWrapper}>
+                <Checkbox
+                  id="paymentAgree"
+                  label="I agree with the payment schedule"
+                  checked={isChecked}
+                  onChange={setIsChecked}
+                />
+                <ButtonMain
+                  radius={8}
+                  height={40}
+                  width={96}
+                  disabled={!isChecked || loading}
+                  onClick={handleSend}
+                >
+                  Send
+                </ButtonMain>
+              </div>
+            </div>
+            {isModalOpen && (
+              <Modal
+                denied={isDenied}
+                isOpen={isModalOpen}
+                onGoHome={handleGoHome}
+                onDenyConfirm={handleDenyConfirm}
+                onClose={() => setModalOpen(false)}
+              />
+            )}
+          </section>
+        </RenderBasedOnStatus>
+      )}
+    </>
   );
 };

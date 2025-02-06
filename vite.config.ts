@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from "vitest/config";
 import react from '@vitejs/plugin-react'
 import path from "path"
 import dns from 'dns'
@@ -15,5 +15,14 @@ export default defineConfig({
   },
   server: {
     port: 3000,
+  },
+  test: {
+    globals: true,
+    environment: "jsdom",
+    css: true,
+    setupFiles: "./src/setupTests.ts",
+    alias: {
+      '\\.module\\.scss$': './__mocks__/styleMock.ts',
+    },
   },
 })

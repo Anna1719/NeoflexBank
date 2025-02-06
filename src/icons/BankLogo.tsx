@@ -1,5 +1,6 @@
 export const BankLogo = () => (
   <svg
+    data-testid="bank-logo"
     width="120"
     height="113"
     viewBox="0 0 120 113"

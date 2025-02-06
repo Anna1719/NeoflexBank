@@ -9,6 +9,7 @@ import style from "./offers.module.scss";
 import { ButtonMain } from "@/shared/ui/buttonMain";
 import { OfferItem } from "../offerItem";
 import { RenderBasedOnStatus } from "@/shared/ui/renderBasedOnStatus";
+import { Loader } from "@/shared/ui/loader";
 
 export const Offers = () => {
   const offers = useSelector((state: LoanState) => state.offers);
@@ -34,26 +35,32 @@ export const Offers = () => {
   }, [loading, success, dispatch]);
 
   return (
-    <RenderBasedOnStatus loading={loading} step={2} error={error}>
-      <div className={style.offerList}>
-        {offers.map((offer, index) => (
-          <div className={style.offerList__item} key={index}>
-            <img
-              src="/images/SurpriseImage.png"
-              alt="Surprise"
-              className={style.offerList__img}
-            />
-            <OfferItem offer={offer} />
-            <ButtonMain
-              radius={8}
-              width={148}
-              onClick={() => handleSelectOffer(offer)}
-            >
-              Select
-            </ButtonMain>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <RenderBasedOnStatus step={2} error={error}>
+          <div className={style.offerList}>
+            {offers.map((offer, index) => (
+              <div className={style.offerList__item} key={index}>
+                <img
+                  src="/images/SurpriseImage.png"
+                  alt="Surprise"
+                  className={style.offerList__img}
+                />
+                <OfferItem offer={offer} />
+                <ButtonMain
+                  radius={8}
+                  width={148}
+                  onClick={() => handleSelectOffer(offer)}
+                >
+                  Select
+                </ButtonMain>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </RenderBasedOnStatus>
+        </RenderBasedOnStatus>
+      )}
+    </>
   );
 };

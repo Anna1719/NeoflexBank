@@ -42,5 +42,5 @@ export const validatePassportDate = (value: string) => {
 
   const passportIssue = new Date(value);
   const today = new Date();
-  if(passportIssue>today) return "Incorrect date of passport issue date"
+  if(passportIssue > today) return "Incorrect date of passport issue date"
 }

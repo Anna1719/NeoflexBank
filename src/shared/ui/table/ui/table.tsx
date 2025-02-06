@@ -1,6 +1,5 @@
-import { ArrowDown } from "@/icons/ArrowDown";
+import { ArrowDown, ArrowUp } from "@/icons";
 import style from "./table.module.scss";
-import { ArrowUp } from "@/icons/ArrowUp";
 
 interface Column<T> {
   key: keyof T;

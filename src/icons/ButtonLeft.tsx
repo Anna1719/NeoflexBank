@@ -1,5 +1,6 @@
 export const ButtonLeft = () => (
   <svg
+    data-testid="button-left-icon"
     width="25"
     height="26"
     viewBox="0 0 25 26"

@@ -38,7 +38,6 @@ export const SubscribeForm = () => {
   }, [data]);
 
   if (isSubscribed)
-    // Вынесено в отдельное условие
     return (
       <div className={style.subscribeForm__message}>
         You are already subscribed to the bank's newsletter.

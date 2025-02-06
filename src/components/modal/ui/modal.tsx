@@ -33,6 +33,7 @@ export const Modal: React.FC<ModalProps> = ({
             </p>
             <div className={style.modal__buttons}>
               <ButtonMain
+                data-testid="deny-button"
                 radius={8}
                 width={96}
                 color="red"
@@ -40,7 +41,12 @@ export const Modal: React.FC<ModalProps> = ({
               >
                 Deny
               </ButtonMain>
-              <ButtonMain radius={8} width={96} onClick={onClose}>
+              <ButtonMain
+                data-testid="cancel-button"
+                radius={8}
+                width={96}
+                onClick={onClose}
+              >
                 Cancel
               </ButtonMain>
             </div>

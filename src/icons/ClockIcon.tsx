@@ -1,5 +1,6 @@
 export const ClockIcon = () => (
   <svg
+    data-testid="clock-icon"
     width="40"
     height="40"
     viewBox="0 0 40 40"

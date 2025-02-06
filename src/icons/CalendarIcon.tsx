@@ -1,5 +1,6 @@
 export const CalendarIcon = () => (
   <svg
+    data-testid="calendar-icon"
     width="40"
     height="40"
     viewBox="0 0 40 40"

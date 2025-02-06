@@ -1,5 +1,6 @@
 export const CardIcon = () => (
   <svg
+    data-testid="card-icon"
     width="40"
     height="40"
     viewBox="0 0 40 40"

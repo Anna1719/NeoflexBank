@@ -1,5 +1,6 @@
 export const EmailLogo = () => (
   <svg
+    data-testid="email-logo"
     width="29"
     height="38"
     viewBox="0 0 29 38"

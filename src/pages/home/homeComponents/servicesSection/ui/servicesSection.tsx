@@ -1,5 +1,5 @@
 import style from "./servicesSection.module.scss";
-import { Checkmark } from "@/icons/Checkmark";
+import { Checkmark } from "@/icons";
 
 const benefits = [
   { id: 1, text: "Powerful online protection." },
